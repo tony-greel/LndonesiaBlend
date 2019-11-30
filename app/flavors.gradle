@@ -1,0 +1,57 @@
+android {
+    productFlavors {
+        flavorDimensions "default", "server"
+        app {
+            applicationId APPLICATION_ID
+
+            buildConfigField('String', 'VERSION', '\"1.0\"')
+            buildConfigField('String', 'CHANNEL', '\"1\"')
+
+            resValue('string', 'app_name', "\"${APP_NAME}\"")
+            buildConfigField('String', 'APP_NAME', "\"${APP_NAME}\"")
+
+            //facebook 配置
+            resValue('string', 'FACEBOOK_APP_ID', "\"${FACEBOOK_APP_ID}\"")
+
+            //活体配置
+            buildConfigField('String', 'LIVING_APP_ID', '\"310cd94d-3008-4c81-a245-2a79569f7015\"')
+            buildConfigField('String', 'LIVING_APP_KEY', '\"shlLUnaf6tbxX6Ylm1oY7xJbNBf0m71Q\"')
+
+            //adjust
+            buildConfigField('String', 'ADJUST_TOKEN', "\"${ADJUST_TOKEN}\"")
+            buildConfigField('String', 'ADJUST_APP_SECRET', "\"${ADJUST_APP_SECRET}\"")
+
+            //bugly
+            buildConfigField('String', 'BUGLY_ID', "\"${BUGLY_ID}\"")
+
+            //渠道
+            buildConfigField('String', 'CHANNEL', "\"${CHANNEL}\"")
+
+            //隐私链接
+            buildConfigField('String', 'PRIVACY_LINK', "\"${PRIVACY_LINK}\"")
+
+            //接口
+            buildConfigField('String', 'RELEASE_URL', "\"${RELEASE_URL}\"")
+
+            dimension "default"
+        }
+
+        //正式服
+        product{
+            //weburl
+            buildConfigField('String', 'WEB_URL', '\"https://h5.goferer.com\"')
+
+            dimension "server"
+        }
+
+        //测试服
+        beta{
+            //weburl
+            buildConfigField('String', 'WEB_URL', '\"https://h5.goferer.com\"')
+
+            dimension "server"
+        }
+
+    }
+
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="id_card_camera_hint0">Chụp ảnh thành công</string>
+    <string name="id_card_camera_hint1">Hãy giữ vị trí này, đừng động đậy</string>
+    <string name="id_card_camera_hint10">Vui lòng ko che chắn vật gì lên thẻ chứng minh, căn chỉnh thẻ chứng minh khớp với các góc của khung ảnh</string>
+    <string name="id_card_camera_hint11">Vui lòng ko che chắn vật gì lên thẻ chứng minh, căn chỉnh thẻ chứng minh khớp với các góc của khung ảnh</string>
+    <string name="id_card_camera_hint2">Vui lòng căn chỉnh thẻ chứng minh với các góc của khung ảnh, không để vật gì che chắn</string>
+    <string name="id_card_camera_hint3">Vui lòng ko che chắn vật gì lên thẻ chứng minh, căn chỉnh thẻ chứng minh khớp với các góc của khung ảnh</string>
+    <string name="id_card_camera_hint4">Vui lòng đảm bảo nhìn rõ thẻ chứng minh thư (thẻ căn cước)</string>
+    <string name="id_card_camera_hint5">Thẻ chứng minh thư bị ngược sáng , hãy điều chỉnh ánh sáng</string>
+    <string name="id_card_camera_hint6">Vui lòng đảm bảo nhìn rõ thẻ chứng minh thư</string>
+    <string name="id_card_camera_hint7">Xin đừng động đậy</string>
+    <string name="id_card_camera_hint8">Khoảng cách quá xa, vui lòng căn chỉnh thẻ chứng minh với các góc của khung ảnh</string>
+    <string name="id_card_camera_hint9">Khoảng cách quá gần, vui lòng căn chỉnh thẻ chứng minh với các góc của khung ảnh</string>
+    <string name="id_card_camera_hint_defalut">Vui lòng căn chỉnh thẻ chứng minh với các góc của khung ảnh, không để vật gì che chắn</string>
+    <string name="id_verify">Xác thực danh tính</string>
+    <string name="live_verify">Nhận diện khuôn mặt</string>
+    <string name="no_auto_to_take_picture">Tự động nhận dạng không thành công, xin vui lòng bấm vào nút camera!</string>
+    <string name="oliveapp_detected_hint_down_face">Xin hãy ngẩng đầu lên một chút</string>
+    <string name="oliveapp_detected_hint_face_not_found">Hãy nhìn thẳng vào màn hình</string>
+    <string name="oliveapp_detected_hint_face_side_face">Xin đừng nghiêng mặt</string>
+    <string name="oliveapp_detected_hint_face_too_large_face">Vui lòng cách xa hơn</string>
+    <string name="oliveapp_detected_hint_face_too_small_face">Vui lòng đến gần hơn</string>
+    <string name="oliveapp_detected_hint_face_up_face">Xin hãy cúi đầu xuống một chút</string>
+    <string name="oliveapp_detected_hint_light_too_bright">Ánh sáng quá mạnh</string>
+    <string name="oliveapp_detected_hint_light_too_dark">Ánh sáng quá yếu</string>
+    <string name="oliveapp_detected_hint_none"/>
+    <string name="oliveapp_face_database_image_hint_front2">Vui lòng chụp ảnh mặt trước của chứng minh thư, đảm bảo rõ nét chân dung và chữ in</string>
+    <string name="oliveapp_face_hint_focus_here">Hay nhìn thẳng đối mặt vào màn hình điện thoại</string>
+    <string name="oliveapp_ready_hint_start">Bắt đầu thôi</string>
+    <string name="oliveapp_step_hint_eyeclose">Vui lòng chớp mắt</string>
+    <string name="oliveapp_step_hint_focus">Hãy nhìn thẳng vào màn hình</string>
+    <string name="oliveapp_step_hint_headshake">Vui lòng lắc đầu trái phải</string>
+    <string name="oliveapp_step_hint_headup">Vui lòng ngẩng đầu lên</string>
+    <string name="oliveapp_step_hint_mouthopen">Vui lòng há miệng</string>
+    <string name="oliveapp_string_count_down">Thời gian đếm ngược</string>
+    <string name="oliveapp_string_second">Giây</string>
+    <string name="server_unconnect">Không thể kết nối đến máy chủ, vui lòng kiểm tra đường truyền mạng</string>
+</resources>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lndonesiablend.activity.upload.PictureUploadActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/picture_upload_top" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_35"
+            android:layout_marginTop="@dimen/dp_26"
+            android:layout_marginRight="@dimen/dp_35"
+            android:src="@mipmap/picture_upload_schedule" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/picture_upload_bar" />
+
+        <TextView
+            style="@style/WrapAndWrap.IdentitySideLabel"
+            android:layout_gravity="left"
+            android:layout_marginTop="@dimen/dp_30"
+            android:text="工作证明" />
+
+        <ImageView
+            android:id="@+id/picture_upload_img"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_180"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_17"
+            android:layout_marginRight="@dimen/dp_30"
+            android:background="@mipmap/picture_upload_bg"
+            android:scaleType="centerInside"
+            android:src="@mipmap/picture_upload_photograph" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:background="@color/colorUploadNoticeBg"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10">
+
+            <TextView
+                style="@style/WrapAndWrap.tv_16_style"
+                android:text="@string/identity_info_choose_one_of_the_options_to_upload"
+                android:textColor="#ff333333" />
+
+            <TextView
+                style="@style/WrapAndWrap.tv_14_style"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="1. Penggajian \n2. Izin kerja \n3. Lisensi sepeda motor (sepeda motor / mobil) \n4. Foto tempat kerja"
+                android:textColor="#ff9b9b9b" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/dp_20"
+            android:layout_marginBottom="@dimen/dp_20">
+
+            <Button
+                android:id="@+id/picture_upload_back"
+                android:layout_width="@dimen/dp_197"
+                android:layout_height="@dimen/dp_50"
+                android:layout_gravity="center"
+                android:background="@drawable/picture_upload_btn_bg"
+                android:text="Kembali ke halaman rumah"
+                android:textColor="@color/color_1979D1"
+                android:textSize="@dimen/sp_18" />
+
+            <Button
+                android:id="@+id/picture_upload_submit"
+                android:layout_width="@dimen/dp_118"
+                android:layout_height="@dimen/dp_50"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp_20"
+                android:background="@drawable/picture_upload_btn_bg_two"
+                android:text="Selanjutnya"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/picture_upload_tail" />
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,80 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MatchAndMatch">
+
+    <com.example.lndonesiablend.load.CameraLoadView
+        android:id="@+id/mCameraView"
+        style="@style/MatchAndMatch"
+        android:layout_centerInParent="true" />
+
+    <LinearLayout
+        style="@style/MatchAndMatch"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/mLlImageMark"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:visibility="invisible">
+
+            <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+                android:id="@+id/verticalTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="6dp"
+                android:gravity="center_vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textColor="@color/white" />
+
+
+            <ImageView
+                android:id="@+id/mTakePhotoMask"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:focusableInTouchMode="false" />
+
+            <com.qmuiteam.qmui.widget.QMUIVerticalTextView
+                style="@style/WrapAndWrap"
+                android:layout_margin="6dp"
+                android:gravity="center_vertical"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/gray_bg">
+
+            <ImageView
+                android:id="@+id/mButtonShoot"
+                android:layout_width="66dp"
+                android:layout_height="66dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:rotation="90" />
+
+            <Button
+                android:id="@+id/mButtonCancel"
+                style="@style/WrapAndWrap"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="18dp"
+                android:background="@null"
+                android:text="@string/camera_back_text" />
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

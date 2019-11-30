@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mRootView"
+    style="@style/MatchAndMatch"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <FrameLayout style="@style/MatchAndWrap">
+
+        <WebView
+            android:id="@+id/mWebView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="5dp" />
+
+        <ProgressBar
+            android:id="@+id/mProgressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:progressDrawable="@drawable/load_bg" />
+
+    </FrameLayout>
+
+    <TextView
+        style="@style/MatchAndWrap"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/dialog_read_policy_fully_title"
+        android:textSize="12dp" />
+
+    <LinearLayout
+        style="@style/MatchAndWrap"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/mCheckbox"
+            android:layout_width="26dp"
+            android:layout_height="26dp" />
+
+        <TextView
+            style="@style/WrapAndWrap"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:tag="read_policy" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mBtnConfirm"
+        style="@style/MatchAndWrap.DialogButtonStyle"
+        android:layout_margin="16dp"
+        android:text="@string/dialog_confirm_button" />
+</LinearLayout>

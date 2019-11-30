@@ -1,0 +1,39 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.weiyun.liveness"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="19"
+8-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="28" />
+9-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml
+10
+11    <application>
+11-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:3:5-14:19
+12
+13        <!-- 活体识别界面 -->
+14        <activity
+14-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:5:9-7:76
+15            android:name="com.weiyun.liveness.liveness.SampleLivenessActivity"
+15-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:5:19-85
+16            android:configChanges="keyboardHidden|orientation|screenSize"
+16-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:7:13-74
+17            android:screenOrientation="portrait" />
+17-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:6:13-49
+18        <activity
+18-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:8:9-10:52
+19            android:name="com.weiyun.liveness.idcard_captor.SampleIdcardCaptorActivity"
+19-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:9:13-88
+20            android:screenOrientation="portrait" />
+20-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:10:13-49
+21        <activity
+21-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:11:9-13:52
+22            android:name="com.weiyun.liveness.idcard_captor.SampleIdcardResult"
+22-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:12:13-80
+23            android:screenOrientation="portrait" />
+23-->E:\Androidprojects\LndonesiaBlend-yini\liveness\src\main\AndroidManifest.xml:13:13-49
+24    </application>
+25
+26</manifest>

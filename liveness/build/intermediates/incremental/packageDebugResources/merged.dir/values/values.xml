@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorDefaultBackground">#1A223E</color>
+    <color name="colorTabButtonSelectText">#FFFFFF</color>
+    <color name="colorTabButtonText">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="itemBgColor">#fefefe</color>
+    <color name="itemSelectColor">#f0f0f0</color>
+    <color name="itemdisabled">#f3f3f4</color>
+    <color name="listLineColor">#e6e6e6</color>
+    <dimen name="oliveapp_activity_horizontal_margin">0dp</dimen>
+    <dimen name="oliveapp_activity_vertical_margin">0dp</dimen>
+    <string name="id_card_camera_hint0">捕获成功</string>
+    <string name="id_card_camera_hint1">请保持此姿势, 不要晃动</string>
+    <string name="id_card_camera_hint10">请不要遮挡身份证, 将身份证跟边框四角对齐</string>
+    <string name="id_card_camera_hint11">请不要遮挡身份证, 将身份证跟边框四角对齐</string>
+    <string name="id_card_camera_hint2">请将身份证跟边框四角对齐, 不要遮挡</string>
+    <string name="id_card_camera_hint3">请不要遮挡身份证, 将身份证跟边框四角对齐</string>
+    <string name="id_card_camera_hint4">请保持身份证清晰</string>
+    <string name="id_card_camera_hint5">请保持身份证清晰身份证反光, 调整光照</string>
+    <string name="id_card_camera_hint6">请保持身份证清晰</string>
+    <string name="id_card_camera_hint7">"请不要晃动</string>
+    <string name="id_card_camera_hint8">离得太远, 请将身份证跟边框四角对齐</string>
+    <string name="id_card_camera_hint9">离得太近, 请将身份证跟边框四角对齐</string>
+    <string name="id_card_camera_hint_defalut">请将身份证跟边框四角对齐, 不要遮挡</string>
+    <string name="id_verify">身份认证</string>
+    <string name="live_verify">人脸验证</string>
+    <string name="no_auto_to_take_picture">自动识别失败，请点击拍照按钮！</string>
+    <string name="oliveapp_detected_hint_down_face">请稍稍抬头</string>
+    <string name="oliveapp_detected_hint_face_not_found">请正对屏幕</string>
+    <string name="oliveapp_detected_hint_face_side_face">请别侧脸</string>
+    <string name="oliveapp_detected_hint_face_too_large_face">请离远点</string>
+    <string name="oliveapp_detected_hint_face_too_small_face">请靠近点</string>
+    <string name="oliveapp_detected_hint_face_up_face">请稍稍低头</string>
+    <string name="oliveapp_detected_hint_light_too_bright">光线太亮了</string>
+    <string name="oliveapp_detected_hint_light_too_dark">光线太暗了</string>
+    <string name="oliveapp_detected_hint_none"/>
+    <string name="oliveapp_face_database_image_hint_front2">请拍摄身份证正面，确保人像和文字清晰</string>
+    <string name="oliveapp_face_hint_focus_here">请正对手机屏幕</string>
+    <string name="oliveapp_ready_hint_start">开始吧</string>
+    <string name="oliveapp_step_hint_eyeclose">请眨眼</string>
+    <string name="oliveapp_step_hint_focus">请正对屏幕</string>
+    <string name="oliveapp_step_hint_headshake">请左右摇头</string>
+    <string name="oliveapp_step_hint_headup">请抬头</string>
+    <string name="oliveapp_step_hint_mouthopen">请张嘴</string>
+    <string name="oliveapp_string_count_down">倒计时</string>
+    <string name="oliveapp_string_second">秒</string>
+    <string name="screen_type" translatable="false">phone</string>
+    <string name="server_unconnect">服务器无法连接，请检查网络</string>
+    <style name="SampleAppTheme" parent="android:Theme.Holo.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:theme">@android:style/Theme.NoTitleBar.Fullscreen</item>
+    </style>
+    <declare-styleable name="FixedAspectLayout">
+        <attr format="float" name="oliveapp_aspectRatio"/>
+        <attr format="integer" name="oliveapp_fixMode">
+            <enum name="fixHeight" value="1"/>
+            <enum name="fixWidth" value="2"/>
+        </attr>
+    </declare-styleable>
+</resources>

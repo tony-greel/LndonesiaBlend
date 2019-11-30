@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+
+    <LinearLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/photo_demonstration_bg"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/dp_21">
+
+        <TextView
+            style="@style/WrapAndWrap"
+            android:padding="@dimen/dp_16"
+            android:text="拍照示范"
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_17"/>
+        <ImageView
+            style="@style/WrapAndWrap"
+            android:src="@mipmap/load_id_three"/>
+        <TextView
+            style="@style/WrapAndWrap"
+            android:padding="@dimen/dp_15"
+            android:text="错误示范"
+            android:textColor="@color/colorSecurityAuthIdentityDialogTitle"
+            android:textSize="@dimen/sp_16" />
+        <ImageView
+            style="@style/WrapAndWrap"
+            android:src="@mipmap/laod_id_three_demonstration"/>
+
+        <Button
+            android:id="@+id/mBtPersonInfoSubmit"
+            style="@style/MatchAndWrap.DialogButtonStyle"
+            android:layout_marginTop="@dimen/dp_25"
+            android:text="开始拍摄" />
+    </LinearLayout>
+
+</FrameLayout>

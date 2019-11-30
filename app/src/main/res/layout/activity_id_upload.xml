@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.upload.IdUploadActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/picture_upload_top"
+            android:adjustViewBounds="true"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/picture_upload_schedule"
+            android:layout_marginTop="@dimen/dp_26"
+            android:layout_marginLeft="@dimen/dp_35"
+            android:layout_marginRight="@dimen/dp_35"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/picture_upload_bar"
+            android:layout_marginTop="@dimen/dp_10"/>
+
+        <TextView
+            style="@style/WrapAndWrap.IdentitySideLabel"
+            android:text="身份证明"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_gravity="left"/>
+
+        <ImageView
+            android:id="@+id/id_upload_one"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/id_upload"
+            android:layout_marginTop="@dimen/dp_18"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/id_upload_two"
+            android:layout_marginTop="@dimen/dp_18"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"/>
+
+        <ImageView
+            android:id="@+id/id_upload_two"
+            android:layout_width="@dimen/dp_290"
+            android:layout_height="@dimen/dp_160"
+            android:src="@mipmap/id_upload_the_other_side"
+            android:layout_marginTop="@dimen/dp_18" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/id_upload_three"
+            android:layout_marginTop="@dimen/dp_18" />
+
+        <Button
+            android:id="@+id/id_upload_but"
+            android:layout_width="@dimen/dp_332"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:background="@drawable/picture_upload_btn_bg_two"
+            android:textColor="@color/white"
+            android:text="提交"
+            android:layout_marginTop="@dimen/dp_25"/>
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_20"
+            android:adjustViewBounds="true"
+            android:src="@mipmap/picture_upload_tail" />
+    </LinearLayout>
+
+
+</ScrollView>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dialog_read_policy_fully_title">*请完整阅读本政策 </string>
+    <string name="dialog_confirm_button">确认</string>
+    <string name="logcat_privacy_privileges">请选中此框以同意该政策！</string>
+    <string name="please_wait">""</string>
+    <string name="identity_info_one_of_the_proofs">1. Penggajian \ n2. Izin kerja \ n3. Lisensi sepeda motor (sepeda motor / mobil) \ n4. Foto tempat kerja</string>
+    <string name="identity_info_choose_one_of_the_options_to_upload">Pilih salah satu opsi berikut untuk diunggah:</string>
+
+    <string name="camera_back_text">Kembali ke</string>
+    <string name="text_tips">提示</string>
+    <string name="text_sure">确定</string>
+    <string name="show_download_on_google_player"></string>
+</resources>
