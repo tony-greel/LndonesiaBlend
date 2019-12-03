@@ -7,7 +7,6 @@ import android.os.Handler;
 import android.widget.Toast;
 
 import com.oliveapp.face.livenessdetectorsdk.livenessdetector.datatype.LivenessDetectionFrames;
-import com.oliveapp.face.livenessdetectorsdk.livenessdetector.datatype.LivenessSessionState;
 import com.oliveapp.face.livenessdetectorsdk.livenessdetector.datatype.OliveappFaceInfo;
 import com.weiyun.liveness.R;
 import com.weiyun.liveness.liveness.view_controller.LivenessDetectionMainActivity;
@@ -22,7 +21,6 @@ public class SampleLivenessActivity extends LivenessDetectionMainActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
 
     @Override
     protected void onResume() {
@@ -63,10 +61,6 @@ public class SampleLivenessActivity extends LivenessDetectionMainActivity {
         }
     }
 
-    @Override
-    public void onLivenessSuccess(final LivenessDetectionFrames livenessDetectionFrames, OliveappFaceInfo faceInfo) {
-        // do nothing
-    }
 
     @Override
     public void onLivenessSuccess(OliveappFaceInfo oliveappFaceInfo) {

@@ -1,5 +1,7 @@
 package com.example.lndonesiablend.base;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -12,13 +14,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lndonesiablend.LndonesiaBlendApp;
+import com.example.lndonesiablend.activity.camera.UploadPhotoActivity;
+import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.broadcast.NetChangeObserver;
 import com.example.lndonesiablend.broadcast.NetStateReceiver;
 import com.example.lndonesiablend.broadcast.NetUtils;
 import com.example.lndonesiablend.utils.MD5Utils;
+import com.example.lndonesiablend.utils.SharePreUtil;
+import com.example.lndonesiablend.utils.UIHelper;
 import com.gyf.barlibrary.ImmersionBar;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -46,6 +55,47 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         initView();
         broadcast();
     }
+
+    @SuppressLint("CheckResult")
+    protected void jurisdictionApply(String a , String b, String c, String d){
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(a,b,c,d).subscribe(aBoolean -> {
+            if (aBoolean) {
+                uploadPicture();
+            } else {
+                UIHelper.showToast(this, "您有尚未通过的权限");
+            }
+        });
+    }
+
+    @SuppressLint("CheckResult")
+    protected void uploadPositive(String a , String b, String c, String d){
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(a,b,c,d).subscribe(aBoolean -> {
+            if (aBoolean) {
+                uploadPositive(UploadPhotoActivity.PhotoType.POSITIVE_PHOTO);
+            } else {
+                UIHelper.showToast(this, "您有尚未通过的权限");
+            }
+        });
+    }
+
+    @SuppressLint("CheckResult")
+    protected void uploadTheOtherSide(String a , String b, String c, String d){
+        RxPermissions rxPermissions = new RxPermissions(this);
+        rxPermissions.request(a,b,c,d).subscribe(aBoolean -> {
+            if (aBoolean) {
+                uploadTheOtherSide(UploadPhotoActivity.PhotoType.BACK_PHOTO);
+            } else {
+                UIHelper.showToast(this, "您有尚未通过的权限");
+            }
+        });
+    }
+
+    protected void uploadPicture(){}
+    protected void uploadPositive(UploadPhotoActivity.PhotoType mPositive){}
+    protected void uploadTheOtherSide(UploadPhotoActivity.PhotoType mTheOtherSide){}
+
 
     /**
      * 广播监听网络
@@ -140,6 +190,28 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         MultipartBody.Part filedata = MultipartBody.Part.createFormData(keyStr, pFile.getName(), requestBody);
         Log.d(LJJ, "toRequestBodyOfImage: " + filedata);
         return filedata;
+    }
+
+    protected List<MultipartBody.Part> getParts(File file, String s){
+        //进行数据加密
+        TreeMap requestUserWorkParams = buildCommonParams();
+        requestUserWorkParams.put("user_id", SharePreUtil.getString(mContext, UserBean.userId, ""));
+        requestUserWorkParams.put("file_type", s);
+        String sign = signParameter(requestUserWorkParams, SharePreUtil.getString(mContext, UserBean.token, ""));
+        requestUserWorkParams.put("sign", sign);
+
+        //接口上传参数
+        List<MultipartBody.Part> parts = new ArrayList<>();
+        parts.add(toRequestBodyOfText("user_id", SharePreUtil.getString(mContext, UserBean.userId, "")));
+        parts.add(toRequestBodyOfText("file_type", s));
+        parts.add(toRequestBodyOfText("sign", sign));
+        parts.add(toRequestBodyOfText("app_version", LndonesiaBlendApp.APP_VERSION));
+        parts.add(toRequestBodyOfText("version", LndonesiaBlendApp.VERSION));
+        parts.add(toRequestBodyOfText("channel", LndonesiaBlendApp.CHANNEL));
+        parts.add(toRequestBodyOfText("timestamp", LndonesiaBlendApp.TIMESTAMP));
+        parts.add(toRequestBodyOfText("pkg_name", LndonesiaBlendApp.APPLICATION_ID));
+        parts.add(toRequestBodyOfImage("file", file));
+        return parts;
     }
 
 }

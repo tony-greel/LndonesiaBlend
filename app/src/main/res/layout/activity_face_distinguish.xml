@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchAndMatch"
+    tools:context="com.example.lndonesiablend.activity.submission.FaceDistinguishActivity"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout style="@style/MatchAndWrap">
+
+        <LinearLayout
+            style="@style/MatchAndWrap"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:src="@mipmap/picture_upload_top" />
+
+            <TextView
+                style="@style/WrapAndWrap"
+                android:layout_gravity="center_horizontal"
+                android:padding="@dimen/dp_21"
+                android:text="人脸识别扫描"
+                android:textColor="@color/colorSecurityAuthLivingThingTitle"
+                android:textSize="@dimen/sp_16" />
+
+            <ImageView
+                style="@style/WrapAndWrap"
+                android:layout_marginTop="@dimen/dp_11"
+                android:src="@mipmap/submission_loan" />
+
+            <ImageView
+                style="@style/WrapAndWrap"
+                android:layout_marginLeft="@dimen/dp_21"
+                android:layout_marginTop="@dimen/dp_21"
+                android:layout_marginRight="@dimen/dp_21"
+                android:scaleType="fitXY"
+                android:src="@mipmap/submission_loan_demo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="正对手机"
+                    android:layout_marginLeft="@dimen/dp_52"
+                    android:layout_marginTop="@dimen/dp_18"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="光线充足"
+                    android:layout_marginLeft="@dimen/dp_68"
+                    android:layout_marginTop="@dimen/dp_18"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="放慢动作"
+                    android:layout_marginLeft="@dimen/dp_68"
+                    android:layout_marginTop="@dimen/dp_18"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/submission_loan_submit"
+                android:layout_width="@dimen/dp_333"
+                android:layout_height="@dimen/dp_51"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:background="@drawable/picture_upload_btn_bg_two"
+                android:text="Selanjutnya"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

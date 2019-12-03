@@ -2,6 +2,7 @@ package com.weiyun.liveness.libsaasclient.backend;
 
 import android.annotation.TargetApi;
 import android.os.Build;
+
 import java.nio.charset.Charset;
 import java.security.MessageDigest;
 import java.util.Locale;

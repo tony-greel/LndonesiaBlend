@@ -1,9 +1,13 @@
 package com.weiyun.liveness.libsaasclient.backend;
+
 import android.os.Build;
+
 import com.oliveapp.liblivenesscommon.utility.Metric;
 import com.weiyun.liveness.libsaasclient.datatype.AccessInfo;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;

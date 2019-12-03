@@ -3,6 +3,7 @@ package com.example.lndonesiablend.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -96,6 +97,22 @@ public class UIHelper {
         }
         Activity activity = activities.lastElement();
         return activity;
+    }
+
+    /**
+     * 判断是否为空
+     *
+     * @param position
+     * @return
+     */
+    public static boolean hasEmptyValue(String... position) {
+        for (String pos : position) {
+            if (TextUtils.isEmpty(pos) || TextUtils.isEmpty(pos.replace(" ", "")) ||
+                    "null".equals(pos.toLowerCase()) || "(null)".equals(pos.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

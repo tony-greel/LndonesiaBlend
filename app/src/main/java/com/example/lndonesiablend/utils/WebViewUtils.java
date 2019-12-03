@@ -1,20 +1,26 @@
 package com.example.lndonesiablend.utils;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
-import android.os.Handler;
+import android.util.Log;
 import android.webkit.WebChromeClient;
-import android.webkit.WebResourceError;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
-
-import com.example.lndonesiablend.BuildConfig;
 import com.example.lndonesiablend.LndonesiaBlendApp;
+import com.example.lndonesiablend.activity.Interface.JavaCallback;
+import com.example.lndonesiablend.activity.Interface.JavaScriptObject;
+import com.example.lndonesiablend.activity.submission.FaceDistinguishActivity;
+import com.example.lndonesiablend.activity.upload.FaceUploadActivity;
+import com.example.lndonesiablend.activity.upload.IdUploadActivity;
+import com.example.lndonesiablend.activity.upload.PictureUploadActivity;
 
 public class WebViewUtils {
 
-    public static void initWebView(WebView webMain ,WebChromeClient webChromeClient,String string) {
+    @SuppressLint("JavascriptInterface")
+    public static void initWebView(Context context ,WebView webMain ,WebChromeClient webChromeClient,String string) {
             WebSettings mSettings = webMain.getSettings();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -41,8 +47,28 @@ public class WebViewUtils {
             mSettings.setBlockNetworkImage(false);
             mSettings.setLayoutAlgorithm(WebSettings.LayoutAlgorithm.NARROW_COLUMNS);
             webMain.setWebChromeClient(webChromeClient);
+
+            webMain.addJavascriptInterface(new JavaScriptObject(context, new JavaCallback() {
+                @Override
+                public void jumpPictureUpload() {
+                    Log.d("TAG","qqq");
+                    Intent intent = new Intent(context, PictureUploadActivity.class);
+                    context.startActivity(intent);
+                }
+
+                @Override
+                public void jumpIdUpload() {
+                    Intent intent = new Intent(context, IdUploadActivity.class);
+                    context.startActivity(intent);
+                }
+
+                @Override
+                public void jumpLiveAuthentication() {
+                    Intent intent = new Intent(context, FaceDistinguishActivity.class);
+                    context.startActivity(intent);
+                }
+            }),"android");
             webMain.loadUrl(string);
         }
-
     }
 }

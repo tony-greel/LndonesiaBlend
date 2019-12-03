@@ -17,8 +17,8 @@ public class AudioModule {
     private MediaPlayer mAudioPlayer = new MediaPlayer();
 
     public void playAudio(Context context, String audioResourceName) {
+        int rawId = getResId(audioResourceName, R.raw.class);
         try {
-            int rawId = getResId(audioResourceName, R.raw.class);
             if (rawId > 0 && mAudioPlayer != null) {
                 if (mAudioPlayer.isPlaying()) {
                     mAudioPlayer.stop();

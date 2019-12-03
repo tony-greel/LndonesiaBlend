@@ -174,7 +174,7 @@ public class SignatureUtil {
         sr.nextBytes(rndBytes);
 
         // Combine signature
-        byte[] signatureStr = mergeArray(accessKey.getBytes(Charset.forName("UTF-8")),HashUtil.MD5.md5(bodyString).getBytes(Charset.forName("UTF-8")));
+        byte[] signatureStr = mergeArray(accessKey.getBytes(Charset.forName("UTF-8")), HashUtil.MD5.md5(bodyString).getBytes(Charset.forName("UTF-8")));
         signatureStr = mergeArray(signatureStr,unixTimeArray);
         signatureStr = mergeArray(signatureStr,rndBytes);
         signatureStr = mergeArray(signatureStr,userDefinedContent.getBytes(Charset.forName("UTF-8")));

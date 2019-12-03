@@ -11,4 +11,6 @@
     <string name="text_tips">Petunjuk</string>
     <string name="text_sure">Oke</string>
     <string name="show_download_on_google_player"></string>
+    <string name="logcat_verification_failure">Tubuh yang hidup gagal, tubuh yang hidup terlempar tidak normal!</string>
+
 </resources>

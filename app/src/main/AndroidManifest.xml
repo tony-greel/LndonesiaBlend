@@ -29,19 +29,10 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.upload.IdUploadActivity"></activity>
-        <!-- <provider -->
-        <!-- android:name="androidx.core.content.FileProvider" -->
-        <!-- android:authorities="com.example.lndonesiablend.FileProvider" -->
-        <!-- android:exported="false" -->
-        <!-- android:grantUriPermissions="true"> -->
-        <!-- <meta-data -->
-        <!-- android:name="android.support.FILE_PROVIDER_PATHS" -->
-        <!-- android:resource="@xml/fall" -->
-        <!-- tools:replace="android:resource" /> -->
-        <!-- </provider> -->
+        <activity android:name=".activity.upload.FaceUploadActivity"></activity>
 
-        <!-- <activity android:name=".activity.upload.PictureUploadActivity"/> -->
+        <activity android:name=".activity.upload.PictureUploadActivity" />
+        <activity android:name=".activity.upload.IdUploadActivity" />
         <activity android:name=".activity.camera.UploadPhotoActivity" />
         <activity android:name=".activity.startup.StartupActivity">
             <intent-filter>
@@ -50,7 +41,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.submission.SubmissionLoanActivity" />
+        <activity android:name=".activity.submission.FaceDistinguishActivity" />
         <activity android:name=".activity.MainActivity" />
 
         <service android:name=".service.UpAppService" /> <!-- facebook安装统计 -->

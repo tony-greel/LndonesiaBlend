@@ -1,6 +1,8 @@
 package com.example.lndonesiablend.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -10,12 +12,12 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.lndonesiablend.BuildConfig;
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.base.BaseActivity;
 import com.example.lndonesiablend.bean.Constant;
 import com.example.lndonesiablend.bean.User;
+import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.broadcast.NetUtils;
 import com.example.lndonesiablend.load.AuthorizationLoadView;
 import com.example.lndonesiablend.load.MainLoadView;
@@ -69,7 +71,7 @@ public class MainActivity extends BaseActivity {
                 imgMain.setVisibility(View.GONE);
                 tvMain.setVisibility(View.GONE);
                 webMain.setVisibility(View.VISIBLE);
-                WebViewUtils.initWebView(webMain,webChromeClient,BuildConfig.WEB_URL);
+                WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
             }else {
                 imgMain.setVisibility(View.VISIBLE);
                 tvMain.setVisibility(View.VISIBLE);
@@ -114,8 +116,7 @@ public class MainActivity extends BaseActivity {
                 webMain.setVisibility(View.VISIBLE);
                 authorizationLoadView.dismiss();
                 mianLoadView.hide();
-                WebViewUtils.initWebView(webMain,webChromeClient,BuildConfig.WEB_URL);
-                webMain.loadUrl(BuildConfig.WEB_URL);
+                WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
 
             } else {
                 UIHelper.showToast(this, "您有尚未通过的权限");
@@ -143,7 +144,17 @@ public class MainActivity extends BaseActivity {
                                 jsonObject.addProperty("vcode", "null");
                             }
                             User user = new Gson().fromJson(jsonObject.toString(), User.class);
-                            Log.d(LJJ, user.toString());
+                            Log.d(LJJ, user.getMark());
+                            SharePreUtil.putString(mContext, UserBean.userId,user.getUserId());
+                            SharePreUtil.putString(mContext, UserBean.selfMobile, user.getSelfMobile());
+                            SharePreUtil.putString(mContext, UserBean.token, user.getToken());
+                            SharePreUtil.putString(mContext, UserBean.userName, user.getUserName());
+                            SharePreUtil.putString(mContext, UserBean.vcode, user.getVcode());
+                            SharePreUtil.putString(mContext, UserBean.phonepre, user.getPhonepre());
+                            SharePreUtil.putString(mContext, UserBean.phone, user.getPhone());
+                            SharePreUtil.putString(mContext, UserBean.sign, user.getSign());
+                            SharePreUtil.putString(mContext, UserBean.productId, user.getProductId());
+                            SharePreUtil.putString(mContext, UserBean.mark, user.getMark());
                         }
                     }
                 });
@@ -151,7 +162,15 @@ public class MainActivity extends BaseActivity {
         }
     };
 
-
+    @OnClick({R.id.img_main, R.id.tv_main})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.img_main:
+            case R.id.tv_main:
+                WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
+                break;
+        }
+    }
 
     /**
      * 连接网络时的状态
@@ -161,9 +180,8 @@ public class MainActivity extends BaseActivity {
         imgMain.setVisibility(View.GONE);
         tvMain.setVisibility(View.GONE);
         webMain.setVisibility(View.VISIBLE);
-        WebViewUtils.initWebView(webMain,webChromeClient,BuildConfig.WEB_URL);
-        webMain.loadUrl(BuildConfig.WEB_URL);
-
+        WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
+//        WebViewUtils.init(webMain,this);
     }
 
     /**
@@ -174,17 +192,6 @@ public class MainActivity extends BaseActivity {
         imgMain.setVisibility(View.VISIBLE);
         tvMain.setVisibility(View.VISIBLE);
         webMain.setVisibility(View.GONE);
-    }
-
-    @OnClick({R.id.img_main, R.id.tv_main})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.img_main:
-            case R.id.tv_main:
-                WebViewUtils.initWebView(webMain,webChromeClient,BuildConfig.WEB_URL);
-
-                break;
-        }
     }
 
     /**

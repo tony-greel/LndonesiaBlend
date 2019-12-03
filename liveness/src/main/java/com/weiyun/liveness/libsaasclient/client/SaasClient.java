@@ -1,12 +1,15 @@
 package com.weiyun.liveness.libsaasclient.client;
 
 import android.util.Base64;
+
 import com.oliveapp.libcommon.utility.LogUtil;
 import com.weiyun.liveness.libsaasclient.backend.RequestWithSignatureHelper;
 import com.weiyun.liveness.libsaasclient.datatype.UserInfo;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;

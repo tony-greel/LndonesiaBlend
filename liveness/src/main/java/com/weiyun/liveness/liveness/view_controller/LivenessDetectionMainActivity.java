@@ -11,6 +11,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.preference.PreferenceManager;
+
 import android.util.DisplayMetrics;
 import android.util.Pair;
 import android.view.OrientationEventListener;
@@ -42,13 +43,12 @@ import com.oliveapp.face.livenessdetectorsdk.livenessdetector.datatype.OliveappF
 import com.oliveapp.face.livenessdetectorsdk.prestartvalidator.datatype.PrestartDetectionFrame;
 import com.oliveapp.libcommon.utility.LogUtil;
 import com.weiyun.liveness.R;
-import com.weiyun.liveness.SharePreKey;
 import com.weiyun.liveness.utils.AudioModule;
 import com.weiyun.liveness.utils.OliveappAnimationHelper;
 import com.weiyun.liveness.utils.SampleScreenDisplayHelper;
-import com.weiyun.liveness.utils.SharePreUtil;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static com.oliveapp.camerasdk.utils.CameraUtil.CAMERA_RATIO_16_9;
 import static com.oliveapp.libcommon.utility.LogUtil.ENABLE_LOG;
@@ -114,48 +114,48 @@ public abstract class LivenessDetectionMainActivity extends Activity implements 
      **/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            ENABLE_LOG = true;
-            LogUtil.MIN_LOG_LEVEL = 0;
-            LogUtil.i(TAG, "[BEGIN] LivenessDetectionMainActivity::onCreate()");
-            increaseClassObjectCount();
-            super.onCreate(savedInstanceState);
-            mLivenessOrientationListener = new LivenessOrientationListener(this);
-            mLivenessOrientationListener.enable();
+        ENABLE_LOG = true;
+        LogUtil.MIN_LOG_LEVEL = 0;
+        LogUtil.i(TAG, "[BEGIN] LivenessDetectionMainActivity::onCreate()");
+        increaseClassObjectCount();
+        super.onCreate(savedInstanceState);
+        mLivenessOrientationListener = new LivenessOrientationListener(this);
+        mLivenessOrientationListener.enable();
 
-            /**
-             *  以下代码是为了配合设置功能，集成时可以删除
-             */
-            SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(LivenessDetectionMainActivity.this);
-            boolean isDebug = sharedPrefs.getBoolean("pref_debug_mode", false);
-            if (isDebug) {
-                if (sharedPrefs.getBoolean("pref_with_prestart", false)) {
-                    mVerificationControllerType = VerificationControllerFactory.VCType.WITH_PRESTART;
-                } else {
-                    mVerificationControllerType = VerificationControllerFactory.VCType.WITHOUT_PRESTART;
-                }
-            }
-            /**
-             *  以上代码是为了配合设置功能，集成时可以删除
-             */
-
-            // 初始化界面元素
-            initViews();
-            // 初始化摄像头
-            initCamera();
-            // 初始化检测逻辑控制器(VerificationController)
-            initControllers();
-
-            /**
-             * 如果有预检的话播放预检相关动画和音频
-             */
-            if (mVerificationControllerType == VerificationControllerFactory.VCType.WITH_PRESTART) {
-                mAnimationHanlder.post(mPreHintAnimation);
-                mIsPrestart = true;
+        /**
+         *  以下代码是为了配合设置功能，集成时可以删除
+         */
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(LivenessDetectionMainActivity.this);
+        boolean isDebug = sharedPrefs.getBoolean("pref_debug_mode", false);
+        if (isDebug) {
+            if (sharedPrefs.getBoolean("pref_with_prestart", false)) {
+                mVerificationControllerType = VerificationControllerFactory.VCType.WITH_PRESTART;
             } else {
-                mIsPrestart = false;
+                mVerificationControllerType = VerificationControllerFactory.VCType.WITHOUT_PRESTART;
             }
+        }
+        /**
+         *  以上代码是为了配合设置功能，集成时可以删除
+         */
 
-            LogUtil.i(TAG, "[END] LivenessDetectionMainActivity::onCreate()");
+        // 初始化界面元素
+        initViews();
+        // 初始化摄像头
+        initCamera();
+        // 初始化检测逻辑控制器(VerificationController)
+        initControllers();
+
+        /**
+         * 如果有预检的话播放预检相关动画和音频
+         */
+        if (mVerificationControllerType == VerificationControllerFactory.VCType.WITH_PRESTART) {
+            mAnimationHanlder.post(mPreHintAnimation);
+            mIsPrestart = true;
+        } else {
+            mIsPrestart = false;
+        }
+
+        LogUtil.i(TAG, "[END] LivenessDetectionMainActivity::onCreate()");
     }
 
     @Override
@@ -437,7 +437,7 @@ public abstract class LivenessDetectionMainActivity extends Activity implements 
         // 使用预设配置: 满足绝大多数常见场景
         mLivenessDetectorConfig = new LivenessDetectorConfig();
         mLivenessDetectorConfig.usePredefinedConfig(3);
-//        mLivenessDetectorConfig.maxFail = 3 - SharePreUtil.getInt(this, SharePreKey.ST_FACE_NUM, 1);
+        //mLivenessDetectorConfig.maxFail = 2 - SharePreUtil.getInt(this, SharePreKey.ST_FACE_NUM, 1);
         /**
          * 注意，以下代码是配合SampleApp的设置工程，请在集成时请删除
          */
@@ -473,6 +473,9 @@ public abstract class LivenessDetectionMainActivity extends Activity implements 
 //        LogUtil.d(TAG, "action list fixedActionList" + mLivenessDetectorConfig.fixedActionList.toString());
 //        LogUtil.d(TAG, "action list candidateActionList " + mLivenessDetectorConfig.candidateActionList.toString());
         /** 注意，以上代码集成时请删除 **/
+
+        mLivenessDetectorConfig.fixedActions = true;
+        mLivenessDetectorConfig.fixedActionList = Arrays.asList(53,1, 3);
 
         if (mLivenessDetectorConfig != null) {
             mLivenessDetectorConfig.validate();

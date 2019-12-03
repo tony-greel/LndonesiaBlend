@@ -8,37 +8,24 @@ public class User {
      * selfMobile : 081246045912
      * token : B1ECE9CC3BD5FB07974CFD03B1034242
      * userName : nwd2EMX
-     * vcode : null
+     * vcode :
      * phonepre : 62
      * phone : 81246045912
      * sign : 69c309bb06df1386b1bc8eed2b050163
      * productId :
+     * mark :
      */
 
     private String userId;
     private String selfMobile;
     private String token;
     private String userName;
-    private Object vcode;
+    private String vcode;
     private String phonepre;
     private String phone;
     private String sign;
     private String productId;
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "userId='" + userId + '\'' +
-                ", selfMobile='" + selfMobile + '\'' +
-                ", token='" + token + '\'' +
-                ", userName='" + userName + '\'' +
-                ", vcode=" + vcode +
-                ", phonepre='" + phonepre + '\'' +
-                ", phone='" + phone + '\'' +
-                ", sign='" + sign + '\'' +
-                ", productId='" + productId + '\'' +
-                '}';
-    }
+    private String mark;
 
     public String getUserId() {
         return userId;
@@ -72,11 +59,11 @@ public class User {
         this.userName = userName;
     }
 
-    public Object getVcode() {
+    public String getVcode() {
         return vcode;
     }
 
-    public void setVcode(Object vcode) {
+    public void setVcode(String vcode) {
         this.vcode = vcode;
     }
 
@@ -110,5 +97,13 @@ public class User {
 
     public void setProductId(String productId) {
         this.productId = productId;
+    }
+
+    public String getMark() {
+        return mark;
+    }
+
+    public void setMark(String mark) {
+        this.mark = mark;
     }
 }

@@ -1,9 +1,12 @@
 package com.weiyun.liveness.utils;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.util.DisplayMetrics;
+
 import com.weiyun.liveness.R;
+
 /**
  * Created by cli on 1/10/17.
  */

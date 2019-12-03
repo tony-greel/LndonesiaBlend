@@ -11,4 +11,6 @@
     <string name="text_tips">提示</string>
     <string name="text_sure">确定</string>
     <string name="show_download_on_google_player"></string>
+    <string name="logcat_verification_failure">活体失败,活体抛异常!</string>
+
 </resources>

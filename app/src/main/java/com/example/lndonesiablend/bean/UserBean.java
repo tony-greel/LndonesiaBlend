@@ -10,4 +10,5 @@ public interface UserBean {
     String phone = "phone";
     String sign = "sign";
     String productId = "productId";
+    String mark = "mark";
 }

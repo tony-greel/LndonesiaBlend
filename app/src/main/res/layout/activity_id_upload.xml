@@ -39,8 +39,8 @@
 
         <ImageView
             android:id="@+id/id_upload_one"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/dp_291"
+            android:layout_height="@dimen/dp_166"
             android:src="@mipmap/id_upload"
             android:layout_marginTop="@dimen/dp_18"/>
 
@@ -54,7 +54,7 @@
 
         <ImageView
             android:id="@+id/id_upload_two"
-            android:layout_width="@dimen/dp_290"
+            android:layout_width="@dimen/dp_280"
             android:layout_height="@dimen/dp_160"
             android:src="@mipmap/id_upload_the_other_side"
             android:layout_marginTop="@dimen/dp_18" />
