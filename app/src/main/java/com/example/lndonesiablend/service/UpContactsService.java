@@ -7,16 +7,16 @@ import android.util.Log;
 import com.example.lndonesiablend.LndonesiaBlendApp;
 import com.example.lndonesiablend.bean.BaseBean;
 import com.example.lndonesiablend.bean.ContactBean;
-import com.example.lndonesiablend.bean.UploadContactsInfo;
+import com.example.lndonesiablend.bean.UploadContactsBean;
 import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.helper.DataBaseHelper;
 import com.example.lndonesiablend.http.Api;
+import com.example.lndonesiablend.http.HttpRequestClient;
 import com.example.lndonesiablend.utils.DeviceInfoFactoryUtil;
 import com.example.lndonesiablend.utils.LogUtils;
 import com.example.lndonesiablend.utils.MD5Utils;
 import com.example.lndonesiablend.utils.RetrofitUtil;
 import com.example.lndonesiablend.utils.SharePreUtil;
-import com.weiyun.liveness.libsaasclient.datatype.UserInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -51,34 +51,34 @@ public class UpContactsService extends IntentService {
         LogUtils.d(Arrays.toString(contacts.toArray()));
         if (contacts != null && contacts.size() > 0) {
 
-            UploadContactsInfo uploadContactsInfo = new UploadContactsInfo();
-            List<UploadContactsInfo.OtherContactsInfo> otherContactsInfoList = new ArrayList<>();
+            UploadContactsBean uploadContactsBean = new UploadContactsBean();
+            List<UploadContactsBean.OtherContactsInfo> otherContactsInfoList = new ArrayList<>();
             for (ContactBean entity : contacts) {
-                UploadContactsInfo.OtherContactsInfo otherContactsInfo
-                        = new UploadContactsInfo.OtherContactsInfo();
+                UploadContactsBean.OtherContactsInfo otherContactsInfo
+                        = new UploadContactsBean.OtherContactsInfo();
                 otherContactsInfo.setOther_name(entity.getName());
                 if (entity.getNumber() != null && entity.getNumber().size() > 0) {
                     otherContactsInfo.setOther_mobile(entity.getNumber().get(0).getNumber());
                 }
                 otherContactsInfoList.add(otherContactsInfo);
             }
-            uploadContactsInfo.setUser_id(SharePreUtil.getString(this, UserBean.userId, ""));
-            uploadContactsInfo.setSelf_mobile(SharePreUtil.getString(this, UserBean.phonepre,"") + "" +
+            uploadContactsBean.setUser_id(SharePreUtil.getString(this, UserBean.userId, ""));
+            uploadContactsBean.setSelf_mobile(SharePreUtil.getString(this, UserBean.phonepre,"") + "" +
                     SharePreUtil.getString(this, UserBean.phone, ""));
-            uploadContactsInfo.setRecord(otherContactsInfoList);
+            uploadContactsBean.setRecord(otherContactsInfoList);
             TreeMap requestParams = buildCommonParams();
-            requestParams.put("user_id", uploadContactsInfo.getUser_id());
-            requestParams.put("self_mobile", uploadContactsInfo.getSelf_mobile());
-            requestParams.put("record", uploadContactsInfo.getRecord());
-            requestParams.put("account_id", uploadContactsInfo.getSelf_mobile());
+            requestParams.put("user_id", uploadContactsBean.getUser_id());
+            requestParams.put("self_mobile", uploadContactsBean.getSelf_mobile());
+            requestParams.put("record", uploadContactsBean.getRecord());
+            requestParams.put("account_id", uploadContactsBean.getSelf_mobile());
             requestParams.put("uuid", mDeviceFactory.getDeviceUuid());
             requestParams.put("imei", mDeviceFactory.getIMEI());
             //进行加密
             String sign = signParameter(requestParams, SharePreUtil.getString(this, UserBean.token, ""));
             requestParams.put("sign", sign);
 
-            RetrofitUtil.getRetrofitUtil().create(Api.class)
-                    .upLoadContactsInfo(requestParams)
+            HttpRequestClient.getRetrofitHttpClient().create(Api.class)
+                    .contactsInfoUpLoad(requestParams)
                     .subscribeOn(Schedulers.io())
                     .subscribeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<BaseBean>() {

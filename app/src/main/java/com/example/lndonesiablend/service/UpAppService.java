@@ -15,6 +15,7 @@ import com.example.lndonesiablend.bean.BaseBean;
 import com.example.lndonesiablend.bean.UploadDeviceInfoBean;
 import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.http.Api;
+import com.example.lndonesiablend.http.HttpRequestClient;
 import com.example.lndonesiablend.utils.DeviceInfoFactoryUtil;
 import com.example.lndonesiablend.utils.DeviceUtil;
 import com.example.lndonesiablend.utils.MD5Utils;
@@ -31,6 +32,7 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.OkHttpClient;
 
 public class UpAppService extends IntentService {
 
@@ -85,8 +87,8 @@ public class UpAppService extends IntentService {
         String sign = signParameter(requestParams, SharePreUtil.getString(this, UserBean.token, ""));
         requestParams.put("sign", sign);
 
-        RetrofitUtil.getRetrofitUtil().create(Api.class)
-                .fetchUserDevice(requestParams)
+        HttpRequestClient.getRetrofitHttpClient().create(Api.class)
+                .submitDevice(requestParams)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<BaseBean>() {

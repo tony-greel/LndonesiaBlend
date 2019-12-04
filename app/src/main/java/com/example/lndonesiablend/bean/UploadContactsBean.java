@@ -8,7 +8,7 @@ import java.util.List;
  * @Time: 2019/6/28
  * @Description: 上传通讯录实体
  */
-public class UploadContactsInfo implements Serializable {
+public class UploadContactsBean implements Serializable {
     public String user_id;
     public String self_mobile;
     public List<OtherContactsInfo> record;
@@ -70,7 +70,7 @@ public class UploadContactsInfo implements Serializable {
 
     @Override
     public String toString() {
-        return "UploadContactsInfo{" +
+        return "UploadContactsBean{" +
                 "user_id='" + user_id + '\'' +
                 ", self_mobile='" + self_mobile + '\'' +
                 ", record=" + record +

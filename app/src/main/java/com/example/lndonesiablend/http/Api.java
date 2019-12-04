@@ -22,34 +22,25 @@ import retrofit2.http.Path;
  */
 public interface Api {
 
-    //提交联系人信息
     @Headers("Content-Type:application/json; charset=utf-8")
     @POST("fetch/user/addressbook")
-    Observable<BaseBean> upLoadContactsInfo(@Body TreeMap requestParams);
+    Observable<BaseBean> contactsInfoUpLoad(@Body TreeMap requestParams);
 
-    //提交贷款
     @Headers("Content-Type:application/json; charset=utf-8")
     @POST("loan/v2/loanapp")
-    Observable<BaseBean<ApplyLoanBean>> submitLoan(@Body TreeMap requestBodyMap);
+    Observable<BaseBean<ApplyLoanBean>>loanSubmit(@Body TreeMap requestBodyMap);
 
-    //提交设备信息
     @POST("fetch/user/device")
-    Observable<BaseBean> fetchUserDevice(@Body TreeMap requestParam);
+    Observable<BaseBean> submitDevice(@Body TreeMap requestParam);
 
-    //app下载统计
     @POST("comm/downoknotify")
-    Observable<BaseBean> appDownloadStatistic(@Body TreeMap requestParams);
-
-    //上传单张图片
-    @Multipart
-    @POST("user/userMediaSingle")
-    Observable<BaseBean> uploadSingleImage(@Part List<MultipartBody.Part> requestBodyMap);
-
-    //上传MAC,蓝牙信息
-    @POST("user/device")
-    Observable<BaseBean> upMacBluetooth(@Body TreeMap requestParams);
+    Observable<BaseBean> statisticAppDownload(@Body TreeMap requestParams);
 
     @Multipart
     @POST("user/userMediaSingle")
-    Call<BaseBean>uploadSingleImg(@Part List<MultipartBody.Part> requestBodyMap);
+    Observable<BaseBean> uploadSingleImg(@Part List<MultipartBody.Part> requestBodyMap);
+
+//    //上传MAC,蓝牙信息
+//    @POST("user/device")
+//    Observable<BaseBean> bluetoothUpload(@Body TreeMap requestParams);
 }

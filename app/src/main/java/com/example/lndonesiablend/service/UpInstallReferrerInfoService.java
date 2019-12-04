@@ -8,6 +8,7 @@ import com.example.lndonesiablend.LndonesiaBlendApp;
 import com.example.lndonesiablend.bean.BaseBean;
 import com.example.lndonesiablend.bean.Constant;
 import com.example.lndonesiablend.http.Api;
+import com.example.lndonesiablend.http.HttpRequestClient;
 import com.example.lndonesiablend.utils.DeviceInfoFactoryUtil;
 import com.example.lndonesiablend.utils.MD5Utils;
 import com.example.lndonesiablend.utils.RetrofitUtil;
@@ -55,8 +56,8 @@ public class UpInstallReferrerInfoService extends IntentService {
             String sign = signParameter(requestParams, "signkey1");
             requestParams.put("sign", sign);
 
-            RetrofitUtil.getRetrofitUtil().create(Api.class)
-                    .appDownloadStatistic(requestParams)
+            HttpRequestClient.getRetrofitHttpClient().create(Api.class)
+                    .statisticAppDownload(requestParams)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Observer<BaseBean>() {

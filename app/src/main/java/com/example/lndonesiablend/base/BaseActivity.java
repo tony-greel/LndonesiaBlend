@@ -68,6 +68,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         });
     }
 
+
     @SuppressLint("CheckResult")
     protected void uploadPositive(String a , String b, String c, String d){
         RxPermissions rxPermissions = new RxPermissions(this);

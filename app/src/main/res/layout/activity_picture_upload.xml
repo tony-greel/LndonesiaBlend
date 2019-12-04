@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFFF7"
+    android:background="#FFFFFF"
     tools:context="com.example.lndonesiablend.activity.upload.PictureUploadActivity">
 
     <LinearLayout
@@ -22,37 +22,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_35"
-            android:layout_marginTop="@dimen/dp_26"
+            android:layout_marginTop="@dimen/dp_12"
             android:layout_marginRight="@dimen/dp_35"
             android:src="@mipmap/picture_upload_schedule" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@mipmap/picture_upload_bar" />
+            android:src="@mipmap/picture_upload_bar"
+            android:layout_marginTop="@dimen/dp_23"/>
 
         <TextView
             style="@style/WrapAndWrap.IdentitySideLabel"
             android:layout_gravity="left"
             android:layout_marginTop="@dimen/dp_30"
-            android:text="工作证明" />
+            android:text="工作证明"
+            android:textColor="#66CE19"/>
 
         <ImageView
             android:id="@+id/picture_upload_img"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_180"
+            android:layout_height="@dimen/dp_192"
             android:layout_marginLeft="@dimen/dp_30"
             android:layout_marginTop="@dimen/dp_17"
             android:layout_marginRight="@dimen/dp_30"
             android:background="@mipmap/picture_upload_bg"
-            android:scaleType="centerInside"
-            android:src="@mipmap/picture_upload_photograph" />
+            android:scaleType="centerInside" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/dp_20"
-            android:background="@color/colorUploadNoticeBg"
+            android:background="#F9FFF4"
             android:orientation="vertical"
             android:paddingLeft="@dimen/dp_20"
             android:paddingTop="@dimen/dp_10"
@@ -81,22 +82,22 @@
 
             <Button
                 android:id="@+id/picture_upload_back"
-                android:layout_width="@dimen/dp_197"
+                android:layout_width="@dimen/dp_118"
                 android:layout_height="@dimen/dp_50"
                 android:layout_gravity="center"
                 android:background="@drawable/picture_upload_btn_bg"
-                android:text="Kembali ke halaman rumah"
-                android:textColor="@color/color_1979D1"
+                android:text="kemball"
+                android:textColor="#58CDAB"
                 android:textSize="@dimen/sp_18" />
 
             <Button
                 android:id="@+id/picture_upload_submit"
-                android:layout_width="@dimen/dp_118"
+                android:layout_width="@dimen/dp_230"
                 android:layout_height="@dimen/dp_50"
                 android:layout_gravity="center"
-                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginStart="@dimen/dp_12"
                 android:background="@drawable/picture_upload_btn_bg_two"
-                android:text="Selanjutnya"
+                android:text="halaman selanjutnya"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_18" />
 

@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 
@@ -17,7 +18,10 @@ import com.example.lndonesiablend.bean.BaseBean;
 import com.example.lndonesiablend.bean.Constant;
 import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.http.Api;
+import com.example.lndonesiablend.http.ExceptionHandle;
 import com.example.lndonesiablend.http.HttpRequestClient;
+import com.example.lndonesiablend.http.Observer;
+import com.example.lndonesiablend.utils.RetrofitUtil;
 import com.example.lndonesiablend.utils.SharePreUtil;
 
 import java.time.LocalDate;
@@ -26,7 +30,6 @@ import java.util.TreeMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
@@ -88,29 +91,31 @@ public class FaceUploadActivity extends BaseActivity {
             treeMap.put("sign", sign);
         }
 
-        HttpRequestClient.getRetrofitHttpClient().create(Api.class).submitLoan(treeMap)
+        RetrofitUtil.getRetrofitUtil().create(Api.class).loanSubmit(treeMap)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<BaseBean<ApplyLoanBean>>() {
                     @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(BaseBean<ApplyLoanBean> applyLoanBeanBaseBean) {
+                    public void onSuccess(BaseBean<ApplyLoanBean> applyLoanBeanBaseBean) {
                         if(applyLoanBeanBaseBean.getCode().equals("600934")){
                             mIvSubmitStateIcon.setImageResource(R.mipmap.submit_all);
                         }
+                        Log.d(LJJ,"onSuccess："+applyLoanBeanBaseBean.getMessage()+"------------"+applyLoanBeanBaseBean.getCode());
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-                        Log.d(LJJ,e.getMessage());
+                    public void onFail(ExceptionHandle.ResponeThrowable e) {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.d(LJJ,"onFail："+e.getMessage());
                     }
 
                     @Override
-                    public void onComplete() {
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onDisposable(Disposable d) {
 
                     }
                 });

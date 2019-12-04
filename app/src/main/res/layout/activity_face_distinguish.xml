@@ -34,9 +34,9 @@
 
             <ImageView
                 style="@style/WrapAndWrap"
-                android:layout_marginLeft="@dimen/dp_21"
-                android:layout_marginTop="@dimen/dp_21"
-                android:layout_marginRight="@dimen/dp_21"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="@dimen/dp_70"
+                android:layout_marginRight="@dimen/dp_10"
                 android:scaleType="fitXY"
                 android:src="@mipmap/submission_loan_demo" />
 
@@ -69,7 +69,7 @@
                 android:layout_width="@dimen/dp_333"
                 android:layout_height="@dimen/dp_51"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_40"
                 android:layout_marginBottom="@dimen/dp_10"
                 android:background="@drawable/picture_upload_btn_bg_two"
                 android:text="Selanjutnya"
