@@ -44,7 +44,7 @@ public class MainLoadView extends Dialog{
             View layout = inflater.inflate(R.layout.load_network, null);
             dialog.addContentView(layout, new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-            dialog.setCanceledOnTouchOutside(false);
+            dialog.setCancelable(false);
             ((TextView) layout.findViewById(R.id.id_tv_loading_dialog_text)).setText(content);
             dialog.setContentView(layout);
             return dialog;

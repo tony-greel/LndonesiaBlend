@@ -81,34 +81,12 @@ public class WebViewUtils {
 
                 @Override
                 public void openLoad() {
-                   activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mianLoadView.show();
-                        }
-                    });
-//                    new Thread(new Runnable() {
-//                            @Override
-//                        public void run() {
-//                            mianLoadView.show();
-//                        }
-//                    });
+                   activity.runOnUiThread(() -> mianLoadView.show());
                 }
 
                 @Override
                 public void closeLoad() {
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            mianLoadView.dismiss();
-                        }
-                    });
-//                    new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
-////                            mianLoadView.dismiss();
-//                        }
-//                    });
+                    activity.runOnUiThread(() -> mianLoadView.dismiss());
                 }
             }), "android");
             webMain.loadUrl(string);

@@ -83,11 +83,12 @@ public class MainActivity extends BaseActivity {
     private void PrivacyjurisdictionPopup() {
         PrivacyLinkLoadView mDialog = new PrivacyLinkLoadView(this);
         mDialog.show();
+        mDialog.setCancelable(false);
         mDialog.setOnConfirmClickListener(checked -> {
             if (checked) {
                 mDialog.cancel();
                 authorizationLoadView = new AuthorizationLoadView(MainActivity.this.getActivity());
-                authorizationLoadView.setCancelable(true);
+                authorizationLoadView.setCancelable(false);
                 authorizationLoadView.show();
                 authorizationLoadView.setOnCloseClickListener(isClick -> {
                     if (isClick) {
@@ -181,7 +182,6 @@ public class MainActivity extends BaseActivity {
         tvMain.setVisibility(View.GONE);
         webMain.setVisibility(View.VISIBLE);
         WebViewUtils.initWebView(this,this,webMain,webChromeClient,BuildConfig.WEB_URL);
-//        WebViewUtils.init(webMain,this);
     }
 
     /**
