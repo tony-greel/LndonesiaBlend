@@ -71,7 +71,7 @@ public class MainActivity extends BaseActivity {
                 imgMain.setVisibility(View.GONE);
                 tvMain.setVisibility(View.GONE);
                 webMain.setVisibility(View.VISIBLE);
-                WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
+                WebViewUtils.initWebView(this,this,webMain,webChromeClient,BuildConfig.WEB_URL);
             }else {
                 imgMain.setVisibility(View.VISIBLE);
                 tvMain.setVisibility(View.VISIBLE);
@@ -87,7 +87,7 @@ public class MainActivity extends BaseActivity {
             if (checked) {
                 mDialog.cancel();
                 authorizationLoadView = new AuthorizationLoadView(MainActivity.this.getActivity());
-                authorizationLoadView.setCancelable(false);
+                authorizationLoadView.setCancelable(true);
                 authorizationLoadView.show();
                 authorizationLoadView.setOnCloseClickListener(isClick -> {
                     if (isClick) {
@@ -95,7 +95,7 @@ public class MainActivity extends BaseActivity {
                     }
                 });
             } else {
-                UIHelper.showToast(this, R.string.logcat_privacy_privileges);
+                UIHelper.showToast(this, R.string.lndonesia_blend_privileges);
             }
         });
     }
@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity {
                 webMain.setVisibility(View.VISIBLE);
                 authorizationLoadView.dismiss();
                 mianLoadView.hide();
-                WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
+                WebViewUtils.initWebView(this,this,webMain,webChromeClient,BuildConfig.WEB_URL);
 
             } else {
                 UIHelper.showToast(this, "您有尚未通过的权限");
@@ -144,7 +144,7 @@ public class MainActivity extends BaseActivity {
                                 jsonObject.addProperty("vcode", "null");
                             }
                             User user = new Gson().fromJson(jsonObject.toString(), User.class);
-                            Log.d(LJJ, user.getMark());
+                            Log.d(LJJ,"user-----------------------------" + user);
                             SharePreUtil.putString(mContext, UserBean.userId,user.getUserId());
                             SharePreUtil.putString(mContext, UserBean.selfMobile, user.getSelfMobile());
                             SharePreUtil.putString(mContext, UserBean.token, user.getToken());
@@ -167,7 +167,7 @@ public class MainActivity extends BaseActivity {
         switch (view.getId()) {
             case R.id.img_main:
             case R.id.tv_main:
-                WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
+                WebViewUtils.initWebView(this,this,webMain,webChromeClient,BuildConfig.WEB_URL);
                 break;
         }
     }
@@ -180,7 +180,7 @@ public class MainActivity extends BaseActivity {
         imgMain.setVisibility(View.GONE);
         tvMain.setVisibility(View.GONE);
         webMain.setVisibility(View.VISIBLE);
-        WebViewUtils.initWebView(this,webMain,webChromeClient,BuildConfig.WEB_URL);
+        WebViewUtils.initWebView(this,this,webMain,webChromeClient,BuildConfig.WEB_URL);
 //        WebViewUtils.init(webMain,this);
     }
 

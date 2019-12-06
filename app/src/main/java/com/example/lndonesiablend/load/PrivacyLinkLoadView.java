@@ -83,7 +83,7 @@ public class PrivacyLinkLoadView extends Dialog {
      * 初始化WebView
      */
     private void configWebView() {
-        WebViewUtils.initWebView(getContext(),mWebView,null,BuildConfig.PRIVACY_LINK);
+        WebViewUtils.initWebView(getOwnerActivity(),getContext(),mWebView,null,BuildConfig.PRIVACY_LINK);
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {

@@ -33,7 +33,7 @@
 
         <TextView
             style="@style/WrapAndWrap.IdentitySideLabel"
-            android:text="身份证明"
+            android:text="@string/identity_certificate"
             android:textColor="#66CE19"
             android:layout_marginTop="@dimen/dp_25"
             android:layout_gravity="left"/>
@@ -78,7 +78,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/picture_upload_btn_bg"
                 android:textColor="#58CDAB"
-                android:text="kemball"
+                android:text="@string/lndonesia_blend_return"
                 android:textSize="@dimen/sp_18" />
             <Button
                 android:id="@+id/id_upload_but"
@@ -87,7 +87,7 @@
                 android:layout_gravity="center"
                 android:background="@drawable/picture_upload_btn_bg_two"
                 android:textColor="@color/white"
-                android:text="halaman selanjutnya"
+                android:text="@string/next_page"
                 android:textSize="@dimen/sp_18"
                 android:layout_marginStart="@dimen/dp_12"
 

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import androidx.annotation.DrawableRes;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentActivity;
 
 import com.example.lndonesiablend.R;
@@ -18,14 +20,14 @@ import com.example.lndonesiablend.utils.ActivityJumperUtil;
 import com.example.lndonesiablend.utils.BitmapUtils;
 import com.example.lndonesiablend.utils.EasyActivityResultUtils;
 import com.example.lndonesiablend.utils.FileUtil;
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import java.io.File;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class UploadPhotoActivity extends BaseActivity {
+public class UploadPhotoActivity extends AppCompatActivity {
 
     @BindView(R.id.mButtonShoot)
     public ImageView mButtonShoot;
@@ -37,7 +39,15 @@ public class UploadPhotoActivity extends BaseActivity {
     public ImageView mTakePhotoMask;
     private String mType;
 
-    public static String KTP_IMAGE = "ktp_img.jpg";
+    public static String KTP_IMAGE = "ljj.jpg";
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_upload_photo);
+        ButterKnife.bind(this);
+        initView();
+    }
 
     @OnClick({R.id.mButtonShoot, R.id.mButtonCancel})
     public void onViewClicked(View view) {
@@ -69,14 +79,13 @@ public class UploadPhotoActivity extends BaseActivity {
         new EasyActivityResultUtils(activity).startForResult(intent, requestCode, result);
     }
 
-    @Override
-    protected int getLayoutId() {
-        return R.layout.activity_upload_photo;
-    }
+//    @Override
+//    protected int getLayoutId() {
+//        return R.layout.activity_upload_photo;
+//    }
 
-    @Override
-    protected void initView() {
-        QMUIStatusBarHelper.translucent((Activity) mContext);
+
+    private void initView() {
 
         mCameraView.setTargetPreviewSize(1280, 720);
         int mask = getIntent().getIntExtra("preview_mask", 0);

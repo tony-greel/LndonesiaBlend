@@ -30,7 +30,7 @@
         style="@style/MatchAndWrap"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="@string/dialog_read_policy_fully_title"
+        android:text="@string/lndonesia_blend_title"
         android:textSize="12dp" />
 
     <LinearLayout
@@ -57,5 +57,6 @@
         android:id="@+id/mBtnConfirm"
         style="@style/MatchAndWrap.DialogButtonStyle"
         android:layout_margin="16dp"
-        android:text="@string/dialog_confirm_button" />
+        android:background="@drawable/picture_upload_btn_bg_two"
+        android:text="@string/lndonesia_blend_button" />
 </LinearLayout>

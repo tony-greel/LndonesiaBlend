@@ -5,5 +5,8 @@ public interface JavaCallback {
     void jumpIdUpload(); // 提交身份证页面
     void jumpLiveAuthentication(); // 进入活体页面
 
+    void openLoad(); // 开启加载弹窗
+    void closeLoad(); // 关闭加载弹窗
+
 
 }

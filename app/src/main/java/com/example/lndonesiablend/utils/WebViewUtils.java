@@ -5,25 +5,36 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
+import android.os.Handler;
 import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+
 import com.example.lndonesiablend.LndonesiaBlendApp;
+import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.Interface.JavaCallback;
 import com.example.lndonesiablend.activity.Interface.JavaScriptObject;
 import com.example.lndonesiablend.activity.submission.FaceDistinguishActivity;
 import com.example.lndonesiablend.activity.upload.FaceUploadActivity;
 import com.example.lndonesiablend.activity.upload.IdUploadActivity;
 import com.example.lndonesiablend.activity.upload.PictureUploadActivity;
+import com.example.lndonesiablend.load.MainLoadView;
 
 public class WebViewUtils {
 
+    private static MainLoadView mianLoadView;
+    private static MainLoadView.Builder mianLoadViewBuilder;
+
     @SuppressLint("JavascriptInterface")
-    public static void initWebView(Context context ,WebView webMain ,WebChromeClient webChromeClient,String string) {
-            WebSettings mSettings = webMain.getSettings();
+    public static void initWebView(Activity activity,Context context, WebView webMain, WebChromeClient webChromeClient, String string) {
+        WebSettings mSettings = webMain.getSettings();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
+            mianLoadViewBuilder = new MainLoadView.Builder(context);
+            mianLoadView = mianLoadViewBuilder.setContent(context.getString(R.string.please_wait)).create();
+
             mSettings.setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
             mSettings.setDomStorageEnabled(true);
             mSettings.setJavaScriptEnabled(true);
@@ -51,7 +62,7 @@ public class WebViewUtils {
             webMain.addJavascriptInterface(new JavaScriptObject(context, new JavaCallback() {
                 @Override
                 public void jumpPictureUpload() {
-                    Log.d("TAG","qqq");
+                    Log.d("TAG", "qqq");
                     Intent intent = new Intent(context, PictureUploadActivity.class);
                     context.startActivity(intent);
                 }
@@ -67,7 +78,39 @@ public class WebViewUtils {
                     Intent intent = new Intent(context, FaceDistinguishActivity.class);
                     context.startActivity(intent);
                 }
-            }),"android");
+
+                @Override
+                public void openLoad() {
+                   activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mianLoadView.show();
+                        }
+                    });
+//                    new Thread(new Runnable() {
+//                            @Override
+//                        public void run() {
+//                            mianLoadView.show();
+//                        }
+//                    });
+                }
+
+                @Override
+                public void closeLoad() {
+                    activity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            mianLoadView.dismiss();
+                        }
+                    });
+//                    new Thread(new Runnable() {
+//                        @Override
+//                        public void run() {
+////                            mianLoadView.dismiss();
+//                        }
+//                    });
+                }
+            }), "android");
             webMain.loadUrl(string);
         }
     }

@@ -27,4 +27,14 @@ public class JavaScriptObject implements JavaCallback{
         this.javaCallback.jumpLiveAuthentication();
     }
 
+    @JavascriptInterface
+    public void openLoad() {
+        this.javaCallback.openLoad();
+    }
+
+    @JavascriptInterface
+    public void closeLoad() {
+        this.javaCallback.closeLoad();
+    }
+
 }

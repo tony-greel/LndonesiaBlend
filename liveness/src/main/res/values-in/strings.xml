@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="oliveapp_ready_hint_start">Mari kita mulai</string>
+
+    <string name="oliveapp_string_second">Kedua</string>
+    <string name="oliveapp_string_count_down">Hitung mundur</string>
+
+    <string name="oliveapp_face_hint_focus_here">Hadapilah layar ponsel</string>
+    <string name="oliveapp_face_database_image_hint_front2">Silakan ambil foto bagian depan kartu ID untuk memastikan potret dan teks jelas</string>
+    <string name="no_auto_to_take_picture">Pengenalan otomatis gagal, silakan klik tombol kamera！</string>
+
+    <string name="oliveapp_step_hint_focus">Hadapilah layar</string>
+    <string name="oliveapp_step_hint_mouthopen">Tolong buka mulutmu</string>
+    <string name="oliveapp_step_hint_eyeclose">Berkedip</string>
+    <string name="oliveapp_step_hint_headup">Tolong lihat ke atas</string>
+    <string name="oliveapp_step_hint_headshake">Silakan menggelengkan kepala Anda</string>
+
+    <string name="oliveapp_detected_hint_none"></string>
+    <string name="oliveapp_detected_hint_face_not_found">Hadapilah layar</string>
+    <string name="oliveapp_detected_hint_face_too_small_face">Silakan mendekat</string>
+    <string name="oliveapp_detected_hint_face_too_large_face">Silahkan menjauh</string>
+    <string name="oliveapp_detected_hint_light_too_bright">Cahayanya terlalu terang</string>
+    <string name="oliveapp_detected_hint_light_too_dark">Lampu terlalu redup</string>
+    <string name="oliveapp_detected_hint_face_side_face">Tolong jangan melihat ke samping</string>
+    <string name="oliveapp_detected_hint_face_up_face">Tolong turunkan kepalamu sedikit</string>
+    <string name="oliveapp_detected_hint_down_face">Silakan lihat sedikit</string>
+
+
+    <string name="id_card_camera_hint0">Menangkap kesuksesan</string>
+    <string name="id_card_camera_hint1">Harap pertahankan postur ini, jangan goyang</string>
+    <string name="id_card_camera_hint2">Harap sejajarkan kartu ID dengan keempat sudut bingkai, jangan menghalangi</string>
+    <string name="id_card_camera_hint3">Tolong jangan menutupi kartu ID, sejajarkan kartu ID dengan empat sudut bingkai</string>
+    <string name="id_card_camera_hint4">Harap jaga ID Anda tetap jelas</string>
+    <string name="id_card_camera_hint5">Tolong jaga ID dan jelaskan ID, sesuaikan cahaya</string>
+    <string name="id_card_camera_hint6">Harap jaga ID Anda tetap jelas</string>
+    <string name="id_card_camera_hint7">Tolong jangan goyang</string>
+    <string name="id_card_camera_hint8">Terlalu jauh, silakan sejajarkan kartu ID dengan empat sudut perbatasan</string>
+    <string name="id_card_camera_hint9">Terlalu dekat, silakan sejajarkan kartu ID dengan empat sudut perbatasan</string>
+    <string name="id_card_camera_hint10">Tolong jangan menutupi kartu ID, sejajarkan kartu ID dengan empat sudut bingkai</string>
+    <string name="id_card_camera_hint11">Tolong jangan menutupi kartu ID, sejajarkan kartu ID dengan empat sudut bingkai</string>
+    <string name="id_card_camera_hint_defalut">Harap sejajarkan kartu ID dengan keempat sudut bingkai, jangan menghalangi</string>
+
+    <string name="id_verify">Otentikasi identitas</string>
+    <string name="live_verify">Verifikasi wajah</string>
+    <string name="server_unconnect">Server tidak dapat terhubung, silakan periksa jaringan</string>
+</resources>

@@ -15,24 +15,25 @@
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/mIvSubmitStateIcon"
+            android:id="@+id/face_upload_stateIcon"
             android:layout_width="@dimen/dp_64"
             android:layout_height="@dimen/dp_64"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp_41" />
 
         <TextView
-            android:id="@+id/mTvSubmitStateTitle"
+            android:id="@+id/face_upload_stateTitle"
             style="@style/WrapAndWrap.tv_16_style"
             android:layout_width="wrap_content"
             android:layout_gravity="center"
-            android:text="恭喜您，贷款申请已提交成功！"
-            android:textColor="@color/colorSubmitSuccessTitle"
-            android:visibility="gone" />
+            android:gravity="center"
+            android:text="@string/submit_successfully"
+            android:visibility="gone"
+            android:textColor="@color/colorSubmitSuccessTitle"/>
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/mCvSubmitProgress"
+            android:id="@+id/face_upload_progress"
             style="@style/MatchAndWrap"
             android:layout_marginLeft="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_50"
@@ -47,7 +48,7 @@
                 android:padding="@dimen/dp_10">
 
                 <ImageView
-                    android:id="@+id/mIvProgressState"
+                    android:id="@+id/face_upload_progress_state"
                     style="@style/MatchAndWrap"
                     android:layout_marginLeft="@dimen/dp_20"
                     android:layout_marginRight="@dimen/dp_20"
@@ -55,36 +56,36 @@
                     tools:ignore="MissingConstraints" />
 
                 <TextView
-                    android:id="@+id/mTvApplyState"
+                    android:id="@+id/face_upload_apply_state"
                     style="@style/WrapAndWrap.tv_12_style"
-                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_marginLeft="@dimen/dp_30"
                     android:padding="@dimen/dp_5"
-                    android:text="贷款申请提交"
+                    android:text="@string/loan_application_submission"
                     android:textColor="@color/colorSubmitSuccessTitle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mIvProgressState"
+                    app:layout_constraintTop_toBottomOf="@id/face_upload_progress_state"
                     tools:ignore="MissingConstraints" />
 
                 <TextView
-                    android:id="@+id/mTvApprovalState"
+                    android:id="@+id/face_upload_spproval_state"
                     style="@style/WrapAndWrap.tv_12_style"
                     android:padding="@dimen/dp_5"
-                    android:text="待审批"
+                    android:text="@string/pending_approval"
                     android:textColor="@color/colorSubmitSuccessHighlightTitle"
                     app:layout_constraintLeft_toRightOf="parent"
                     app:layout_constraintRight_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mIvProgressState"
+                    app:layout_constraintTop_toBottomOf="@id/face_upload_progress_state"
                     tools:ignore="MissingConstraints" />
 
                 <TextView
-                    android:id="@+id/mTvLoanState"
+                    android:id="@+id/face_upload_loan_state"
                     style="@style/WrapAndWrap.tv_12_style"
-                    android:layout_marginRight="@dimen/dp_23"
+                    android:layout_marginRight="@dimen/dp_50"
                     android:padding="@dimen/dp_5"
-                    android:text="放款"
+                    android:text="@string/lndonesia_blend_loan"
                     android:textColor="@color/colorSubmitSuccessTitle"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/mIvProgressState"
+                    app:layout_constraintTop_toBottomOf="@id/face_upload_progress_state"
                     tools:ignore="MissingConstraints" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -92,19 +93,20 @@
 
 
         <TextView
-            android:id="@+id/mTvStateDescribe"
+            android:id="@+id/face_upload_state_describe"
             style="@style/WrapAndWrap.tv_14_style"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/dp_26"
             android:padding="@dimen/dp_10"
-            android:text="近期请留意电话以及短信通知，我们会有客服人员联系您"
+            android:text="Harap perhatikan pemberitahuan telepon dan SMS dalam waktu dekat, kami akan meminta staf layanan pelanggan untuk menghubungi Anda"
             android:textColor="@color/colorSubmitSuccessTitle"
             android:visibility="gone" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/mBtDetermine"
+        android:id="@+id/face_upload_determine"
         style="@style/MatchAndWrap.OtherColourSubmitButtonStyle"
+        android:background="@drawable/picture_upload_btn_bg_two"
         android:text="返回主页" />
 
 </LinearLayout>

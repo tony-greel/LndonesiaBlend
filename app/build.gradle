@@ -12,13 +12,18 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionName APP_VERSION
+        versionName VERSION_NUMBER
         versionCode Integer.parseInt(versionName.replace(".", ""))
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         ndk {
             // 设置支持的SO库架构
             abiFilters 'armeabi', 'x86_64', 'armeabi-v7a', 'arm64-v8a', 'x86'
+        }
+
+        lintOptions {
+
+            disable 'MissingTranslation'
         }
     }
 
@@ -104,27 +109,21 @@ dependencies {
     //yitu
     implementation project(':liveness')
 
-    //leakcanary
+    //检测内存泄漏框架
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
-    // Optional, if you use support library fragments:
     debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
 
     //FaceBook
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
-
     //集成Adjust
     implementation 'com.adjust.sdk:adjust-android:4.18.0'
     implementation 'com.android.installreferrer:installreferrer:1.0'
     implementation 'com.adjust.sdk:adjust-android-webbridge:4.17.0'
     implementation 'com.google.android.gms:play-services-analytics:16.0.4'
 
-    //bugly
-    implementation 'com.tencent.bugly:crashreport:3.1.0'
-
     // 权限请求
     implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
-
     //StatusBar沉浸式状态栏
     implementation 'com.gyf.barlibrary:barlibrary:2.3.0'
 
@@ -140,21 +139,13 @@ dependencies {
     //gson
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.google.code.gson:gson:2.8.5'
-    //fastjson
-    implementation 'com.alibaba:fastjson:1.2.7'
+
     // stream
     implementation 'com.annimon:stream:1.1.4'
-
     implementation 'com.android.support:multidex:1.0.3'
 
-    //QMUI
-    implementation 'com.qmuiteam:qmui:1.1.10'
-    //腾讯X5
-    implementation 'com.tencent.tbs.tbssdk:sdk:43697'
-    //SpinKit加载框架
+    //SpinKit加载动画框架
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
-
-
 }
 repositories {
     mavenCentral()

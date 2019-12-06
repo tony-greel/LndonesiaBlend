@@ -24,7 +24,7 @@
             android:textSize="@dimen/sp_17"/>
         <ImageView
             style="@style/WrapAndWrap"
-            android:src="@mipmap/load_id_three"/>
+      />
         <TextView
             style="@style/WrapAndWrap"
             android:padding="@dimen/dp_15"
@@ -33,7 +33,7 @@
             android:textSize="@dimen/sp_16" />
         <ImageView
             style="@style/WrapAndWrap"
-            android:src="@mipmap/laod_id_three_demonstration"/>
+         />
 
         <Button
             android:id="@+id/mBtPersonInfoSubmit"

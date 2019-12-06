@@ -84,7 +84,7 @@ public class PictureUploadActivity extends BaseActivity {
                 if (photoFile != null) {
                     upload();
                 } else {
-                    Toast.makeText(mContext, "请完善资料!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, R.string.please_complete_the_information, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.picture_upload_back:
@@ -125,7 +125,7 @@ public class PictureUploadActivity extends BaseActivity {
         parts.add(toRequestBodyOfText("user_id", SharePreUtil.getString(this, UserBean.userId, "")));
         parts.add(toRequestBodyOfText("file_type", Izin_kerja));
         parts.add(toRequestBodyOfText("sign", sign));
-        parts.add(toRequestBodyOfText("app_version", LndonesiaBlendApp.APP_VERSION));
+        parts.add(toRequestBodyOfText("app_version", LndonesiaBlendApp.VERSION_NUMBER));
         parts.add(toRequestBodyOfText("version", LndonesiaBlendApp.VERSION));
         parts.add(toRequestBodyOfText("channel", LndonesiaBlendApp.CHANNEL));
         parts.add(toRequestBodyOfText("timestamp", LndonesiaBlendApp.TIMESTAMP));

@@ -92,9 +92,8 @@ public class FaceDistinguishActivity extends BaseActivity {
             intent.putExtra(Constant.IMAGE_PATH, liveImage)
                     .putExtra(Constant.JUMP_TO_LIVING_BODY, isJumpFromH5);
             startActivity(intent);
-            finish();
         } else {
-            UIHelper.showToast(mContext, "当前用户数据异常!");
+            UIHelper.showToast(mContext, R.string.current_user_data_exception);
         }
     }
 

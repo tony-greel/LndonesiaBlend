@@ -106,4 +106,20 @@ public class User {
     public void setMark(String mark) {
         this.mark = mark;
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId='" + userId + '\'' +
+                ", selfMobile='" + selfMobile + '\'' +
+                ", token='" + token + '\'' +
+                ", userName='" + userName + '\'' +
+                ", vcode='" + vcode + '\'' +
+                ", phonepre='" + phonepre + '\'' +
+                ", phone='" + phone + '\'' +
+                ", sign='" + sign + '\'' +
+                ", productId='" + productId + '\'' +
+                ", mark='" + mark + '\'' +
+                '}';
+    }
 }

@@ -21,16 +21,16 @@
             android:orientation="horizontal"
             android:visibility="invisible">
 
-            <com.qmuiteam.qmui.widget.QMUIVerticalTextView
-                android:id="@+id/verticalTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_margin="6dp"
-                android:gravity="center_vertical"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:textColor="@color/white" />
+<!--            <com.qmuiteam.qmui.widget.QMUIVerticalTextView-->
+<!--                android:id="@+id/verticalTextView"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentRight="true"-->
+<!--                android:layout_margin="6dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:paddingTop="16dp"-->
+<!--                android:paddingBottom="16dp"-->
+<!--                android:textColor="@color/white" />-->
 
 
             <ImageView
@@ -41,13 +41,13 @@
                 android:layout_weight="1"
                 android:focusableInTouchMode="false" />
 
-            <com.qmuiteam.qmui.widget.QMUIVerticalTextView
-                style="@style/WrapAndWrap"
-                android:layout_margin="6dp"
-                android:gravity="center_vertical"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:textColor="@color/white" />
+<!--            <com.qmuiteam.qmui.widget.QMUIVerticalTextView-->
+<!--                style="@style/WrapAndWrap"-->
+<!--                android:layout_margin="6dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:paddingTop="16dp"-->
+<!--                android:paddingBottom="16dp"-->
+<!--                android:textColor="@color/white" />-->
 
         </LinearLayout>
 

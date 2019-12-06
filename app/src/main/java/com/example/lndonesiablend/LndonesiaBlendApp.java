@@ -1,17 +1,13 @@
 package com.example.lndonesiablend;
-
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.multidex.MultiDex;
-
 import com.adjust.sdk.Adjust;
 import com.adjust.sdk.AdjustConfig;
 import com.adjust.sdk.AdjustEvent;
@@ -21,36 +17,37 @@ import com.example.lndonesiablend.event.AdjustEvents;
 import com.example.lndonesiablend.helper.DataBaseHelper;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 import com.squareup.leakcanary.LeakCanary;
-import com.tencent.bugly.crashreport.CrashReport;
-import com.tencent.smtt.sdk.QbSdk;
-
-import static android.content.ContentValues.TAG;
 
 public class LndonesiaBlendApp extends Application{
 
-    private static Context mAppContext;
-
-    public static String APP_VERSION;
+    private static Context mContext;
+    public static String VERSION_NUMBER;
     public static String VERSION;
     public static String CHANNEL;
     public static String TIMESTAMP;
     public static String APPLICATION_ID;
 
+    public static Context getAppContext() {
+        return mContext;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        mAppContext = getApplicationContext();
-        DataBaseHelper.init(mAppContext);
-        APP_VERSION = BuildConfig.VERSION_NAME;
+        initData();
+        initLeakCanary();
+        initAdjust();
+        broadcast();
+    }
+
+    private void initData() {
+        VERSION_NUMBER = BuildConfig.VERSION_NAME;
         VERSION = BuildConfig.VERSION;
         CHANNEL = BuildConfig.CHANNEL;
         TIMESTAMP = System.currentTimeMillis() + "";
         APPLICATION_ID = BuildConfig.APPLICATION_ID;
-        initLeakCanary();
-        initX5();
-        initAdjust();
-        initBugly();
-        broadcast();
+        mContext = getApplicationContext();
+        DataBaseHelper.init(mContext);
     }
 
     private void broadcast() {
@@ -74,11 +71,6 @@ public class LndonesiaBlendApp extends Application{
         android.os.Process.killProcess(android.os.Process.myPid());
     }
 
-    private void initBugly() {
-        CrashReport.initCrashReport(getApplicationContext(), BuildConfig.BUGLY_ID, false);
-
-    }
-
     private void initLeakCanary() {
         if (LeakCanary.isInAnalyzerProcess(this)){
             return;
@@ -92,18 +84,6 @@ public class LndonesiaBlendApp extends Application{
         MultiDex.install(this);
     }
 
-    private void initX5() {
-        QbSdk.PreInitCallback cb = new QbSdk.PreInitCallback() {
-            @Override
-            public void onCoreInitFinished() {}
-
-            @Override
-            public void onViewInitFinished(boolean b) {
-                Log.d(TAG, "onCoreInitFinished is " + b);
-            }
-        };
-        QbSdk.initX5Environment(getAppContext(), cb);
-    }
 
     private void initAdjust() {
         String[] signs = BuildConfig.ADJUST_APP_SECRET.split(", ");
@@ -113,34 +93,34 @@ public class LndonesiaBlendApp extends Application{
         Integer info3 = Integer.parseInt(signs[3]);
         Integer info4 = Integer.parseInt(signs[4]);
 
-        String appToken = BuildConfig.ADJUST_TOKEN;
+        String token = BuildConfig.ADJUST_TOKEN;
         String environment = AdjustConfig.ENVIRONMENT_PRODUCTION;
-        AdjustConfig config = new AdjustConfig(getAppContext(), appToken, environment);
+        AdjustConfig config = new AdjustConfig(getAppContext(), token, environment);
         config.setAppSecret(secretId, info1, info2, info3, info4);
         config.setSendInBackground(true);
         config.setLogLevel(LogLevel.VERBOSE);
+
         Adjust.onCreate(config);
         registerActivityLifecycleCallbacks(new AdjustLifecycleCallbacks());
 
-        new Thread(() -> {
-            try {
-                AdvertisingIdClient.Info adInfo = AdvertisingIdClient.getAdvertisingIdInfo(getAppContext());
-                String id = adInfo.getId();
-                Adjust.trackEvent(new AdjustEvent(AdjustEvents.APP_INSTALL.getCode()));
-                AdjustEvent adjustEvent = new AdjustEvent(AdjustEvents.GAID.getCode());
-                adjustEvent.addCallbackParameter("key", "gaid");
-                adjustEvent.addCallbackParameter("value", id);
-                adjustEvent.addCallbackParameter("source", BuildConfig.APP_NAME);
-                Adjust.trackEvent(adjustEvent);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }).start();
+        new Thread(() -> getUpload()).start();
     }
 
-    public static Context getAppContext() {
-        return mAppContext;
+    private void getUpload() {
+        try {
+            AdvertisingIdClient.Info adInfo = AdvertisingIdClient.getAdvertisingIdInfo(getAppContext());
+            String id = adInfo.getId();
+            Adjust.trackEvent(new AdjustEvent(AdjustEvents.APP_INSTALL.getCode()));
+            AdjustEvent adjustEvent = new AdjustEvent(AdjustEvents.GAID.getCode());
+            adjustEvent.addCallbackParameter("key", "gaid");
+            adjustEvent.addCallbackParameter("value", id);
+            adjustEvent.addCallbackParameter("source", BuildConfig.APP_NAME);
+            Adjust.trackEvent(adjustEvent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
     private static final class AdjustLifecycleCallbacks implements Application.ActivityLifecycleCallbacks {
 

@@ -82,7 +82,7 @@ public class IdUploadActivity extends BaseActivity {
                 if (mPositive != null && mTheOtherSide != null) {
                     submission(mPositive, POSITIVE, mTheOtherSide, THE_OTHER_SIDE);
                 } else {
-                    Toast.makeText(mContext, "请完善资料！", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, R.string.please_complete_the_information, Toast.LENGTH_SHORT).show();
                 }
                 break;
             case R.id.id_button_return:
@@ -129,6 +129,7 @@ public class IdUploadActivity extends BaseActivity {
                             Toast.makeText(mContext, "上传身份证成功", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getActivity(), FaceDistinguishActivity.class);
                             startActivity(intent);
+                            finish();
                         } else if (baseBean.getCode().equals("200") && SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("1")) {
                             Toast.makeText(mContext, "上传身份证成功", Toast.LENGTH_SHORT).show();
                             mianLoadView.cancel();

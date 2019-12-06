@@ -11,7 +11,6 @@ import com.example.lndonesiablend.http.Api;
 import com.example.lndonesiablend.http.HttpRequestClient;
 import com.example.lndonesiablend.utils.DeviceInfoFactoryUtil;
 import com.example.lndonesiablend.utils.MD5Utils;
-import com.example.lndonesiablend.utils.RetrofitUtil;
 
 import com.example.lndonesiablend.utils.TimeUtils;
 import com.weiyun.liveness.utils.SharePreUtil;
@@ -106,7 +105,7 @@ public class UpInstallReferrerInfoService extends IntentService {
 
     protected TreeMap<String, Object> buildCommonParams() {
         TreeMap<String, Object> treeMap = new TreeMap<>();
-        treeMap.put("app_version", LndonesiaBlendApp.APP_VERSION);
+        treeMap.put("app_version", LndonesiaBlendApp.VERSION_NUMBER);
         treeMap.put("version", LndonesiaBlendApp.VERSION);
         treeMap.put("channel", LndonesiaBlendApp.CHANNEL);
         treeMap.put("timestamp", LndonesiaBlendApp.TIMESTAMP);

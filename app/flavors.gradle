@@ -21,9 +21,6 @@ android {
             buildConfigField('String', 'ADJUST_TOKEN', "\"${ADJUST_TOKEN}\"")
             buildConfigField('String', 'ADJUST_APP_SECRET', "\"${ADJUST_APP_SECRET}\"")
 
-            //bugly
-            buildConfigField('String', 'BUGLY_ID', "\"${BUGLY_ID}\"")
-
             //渠道
             buildConfigField('String', 'CHANNEL', "\"${CHANNEL}\"")
 

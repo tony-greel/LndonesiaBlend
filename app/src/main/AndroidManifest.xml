@@ -29,8 +29,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.upload.FaceUploadActivity"></activity>
-
+        <activity android:name=".activity.upload.UploadSuccessActivity"></activity>
+        <activity android:name=".activity.upload.FaceUploadActivity" />
         <activity android:name=".activity.upload.PictureUploadActivity" />
         <activity android:name=".activity.upload.IdUploadActivity" />
         <activity android:name=".activity.camera.UploadPhotoActivity" />

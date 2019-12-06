@@ -39,7 +39,6 @@ import okhttp3.RequestBody;
 
 public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Unbinder mBinder;
     protected NetChangeObserver mNetChangeObserver = null;
     public Context mContext;
     private static final String LJJ = "PictureUploadActivity";
@@ -47,10 +46,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mContext = getActivity();
         setContentView(getLayoutId());
-        mBinder = ButterKnife.bind(this);
+        ButterKnife.bind(this);
         setStatusBar();
         initView();
         broadcast();
@@ -92,7 +90,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             }
         });
     }
-
     protected void uploadPicture(){}
     protected void uploadPositive(UploadPhotoActivity.PhotoType mPositive){}
     protected void uploadTheOtherSide(UploadPhotoActivity.PhotoType mTheOtherSide){}
@@ -154,12 +151,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     //公共参数
     protected TreeMap<String, Object> buildCommonParams() {
         TreeMap<String, Object> treeMap = new TreeMap<>();
-        treeMap.put("app_version", LndonesiaBlendApp.APP_VERSION);
+        treeMap.put("app_version", LndonesiaBlendApp.VERSION_NUMBER);
         treeMap.put("version", LndonesiaBlendApp.VERSION);
         treeMap.put("channel", LndonesiaBlendApp.CHANNEL);
         treeMap.put("timestamp", LndonesiaBlendApp.TIMESTAMP);
         treeMap.put("pkg_name", LndonesiaBlendApp.APPLICATION_ID);
-
         return treeMap;
     }
 
@@ -206,7 +202,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         parts.add(toRequestBodyOfText("user_id", SharePreUtil.getString(mContext, UserBean.userId, "")));
         parts.add(toRequestBodyOfText("file_type", s));
         parts.add(toRequestBodyOfText("sign", sign));
-        parts.add(toRequestBodyOfText("app_version", LndonesiaBlendApp.APP_VERSION));
+        parts.add(toRequestBodyOfText("app_version", LndonesiaBlendApp.VERSION_NUMBER));
         parts.add(toRequestBodyOfText("version", LndonesiaBlendApp.VERSION));
         parts.add(toRequestBodyOfText("channel", LndonesiaBlendApp.CHANNEL));
         parts.add(toRequestBodyOfText("timestamp", LndonesiaBlendApp.TIMESTAMP));

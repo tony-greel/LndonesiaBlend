@@ -36,7 +36,7 @@
             style="@style/WrapAndWrap.IdentitySideLabel"
             android:layout_gravity="left"
             android:layout_marginTop="@dimen/dp_30"
-            android:text="工作证明"
+            android:text="@string/work_proof"
             android:textColor="#66CE19"/>
 
         <ImageView
@@ -62,13 +62,13 @@
 
             <TextView
                 style="@style/WrapAndWrap.tv_16_style"
-                android:text="@string/identity_info_choose_one_of_the_options_to_upload"
+                android:text="@string/select_one_of_the_following_options_to_upload"
                 android:textColor="#ff333333" />
 
             <TextView
                 style="@style/WrapAndWrap.tv_14_style"
                 android:layout_marginTop="@dimen/dp_10"
-                android:text="1. Penggajian \n2. Izin kerja \n3. Lisensi sepeda motor (sepeda motor / mobil) \n4. Foto tempat kerja"
+                android:text="@string/lndonesia_blend_list"
                 android:textColor="#ff9b9b9b" />
         </LinearLayout>
 
@@ -86,7 +86,7 @@
                 android:layout_height="@dimen/dp_50"
                 android:layout_gravity="center"
                 android:background="@drawable/picture_upload_btn_bg"
-                android:text="kemball"
+                android:text="@string/lndonesia_blend_return"
                 android:textColor="#58CDAB"
                 android:textSize="@dimen/sp_18" />
 
@@ -97,7 +97,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/dp_12"
                 android:background="@drawable/picture_upload_btn_bg_two"
-                android:text="halaman selanjutnya"
+                android:text="@string/next_page"
                 android:textColor="@color/white"
                 android:textSize="@dimen/sp_18" />
 
