@@ -10,7 +10,7 @@
     <string name="tips">提示</string>
     <string name="determine">确定</string>
     <string name="show_download_on_google_player"></string>
-    <string name="failure_of_living_body_abnormal_throwing_of_living_body">活体失败,活体抛异常!</string>
+    <string name="logcat_verification_failure">活体失败,活体抛异常!</string>
 
 
     <!--上传工作照 -->
@@ -37,6 +37,12 @@
     <string name="lndonesia_blend_see">查看</string>
 
     <string name="lndonesia_blend_resubmission">重新提交</string>
+
+    <string name="upload_id_card_succeeded">上传身份证成功</string>
+    <string name="failed_to_upload_id_card">上传身份证失败</string>
+    <string name="photos_uploaded_successfully">照片已经成功上传</string>
+    <string name="photo_upload_failed">照片上传失败</string>
+
 
     <!--申请贷款成功-->
     <string name="submit_successfully">提交成功！</string>

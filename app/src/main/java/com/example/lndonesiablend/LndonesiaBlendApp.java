@@ -16,7 +16,6 @@ import com.example.lndonesiablend.broadcast.NetStateReceiver;
 import com.example.lndonesiablend.event.AdjustEvents;
 import com.example.lndonesiablend.helper.DataBaseHelper;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
-import com.squareup.leakcanary.LeakCanary;
 
 public class LndonesiaBlendApp extends Application{
 
@@ -35,7 +34,7 @@ public class LndonesiaBlendApp extends Application{
     public void onCreate() {
         super.onCreate();
         initData();
-        initLeakCanary();
+//        initLeakCanary();
         initAdjust();
         broadcast();
     }
@@ -69,13 +68,6 @@ public class LndonesiaBlendApp extends Application{
         super.onLowMemory();
         NetStateReceiver.unRegisterNetworkStateReceiver(this);
         android.os.Process.killProcess(android.os.Process.myPid());
-    }
-
-    private void initLeakCanary() {
-        if (LeakCanary.isInAnalyzerProcess(this)){
-            return;
-        }
-        LeakCanary.install(this);
     }
 
     @Override

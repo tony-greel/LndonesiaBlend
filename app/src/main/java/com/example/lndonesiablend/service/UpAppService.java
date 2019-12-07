@@ -63,6 +63,9 @@ public class UpAppService extends IntentService {
         uploadDeviceInfo.setCpu_cores(mDeviceFactory.getCpuCores());
         uploadDeviceInfo.setResolution(mDeviceFactory.getResolution());
         uploadDeviceInfo.setVersion(mDeviceFactory.getSystemVersion());
+        uploadDeviceInfo.setRam( mDeviceFactory.getTotalMemory(this));
+        uploadDeviceInfo.setRom( mDeviceFactory.getInternalToatalSpace(this));
+
         uploadDeviceInfo.setApplist(readApp());
         uploadDeviceInfo.setBluetoothId(DeviceUtil.getBlueTooth());
         uploadDeviceInfo.setWifi(DeviceUtil.getWifiName(this));
@@ -82,6 +85,8 @@ public class UpAppService extends IntentService {
                 + SharePreUtil.getString(this, UserBean.phone, ""));
         requestParams.put("uuid", mDeviceFactory.getDeviceUuid() + "");
         requestParams.put("imei",mDeviceFactory.getIMEI());
+//        requestParams.put("ram", mDeviceFactory.getTotalMemory(this));
+//        requestParams.put("rom", mDeviceFactory.getInternalToatalSpace(this));
         //进行加密
         String sign = signParameter(requestParams, SharePreUtil.getString(this, UserBean.token, ""));
         requestParams.put("sign", sign);
@@ -98,12 +103,10 @@ public class UpAppService extends IntentService {
                     @Override
                     public void onNext(BaseBean baseBean) {
                         Log.d("LJJ", baseBean.getMessage());
-                        Toast.makeText(UpAppService.this, baseBean.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(UpAppService.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         Log.d("LJJ", e.getMessage());
                     }
 

@@ -71,7 +71,7 @@ public class FaceDistinguishActivity extends BaseActivity {
                         getLiveImage(data);
                     } else {
                         Log.d(TAG, "initLiveness: failed");
-                        ToastBelowshow(FaceDistinguishActivity.this.getString(R.string.logcat_verification_failure));
+                        toastBelowshow(FaceDistinguishActivity.this.getString(R.string.logcat_verification_failure));
                     }
                 }
             }
@@ -101,7 +101,7 @@ public class FaceDistinguishActivity extends BaseActivity {
      * 短时间显示Toast【居下】
      * @param msg 显示的内容-字符串
      */
-    public static void ToastBelowshow(String msg) {
+    public static void toastBelowshow(String msg) {
         if (LndonesiaBlendApp.getAppContext() != null) {
             if (toast == null) {
                 toast = Toast.makeText(LndonesiaBlendApp.getAppContext(), msg, Toast.LENGTH_SHORT);

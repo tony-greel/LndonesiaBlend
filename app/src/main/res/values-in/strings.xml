@@ -36,10 +36,16 @@
     <string name="lndonesia_blend_see">Lihat</string>
     <string name="lndonesia_blend_resubmission">Kirim ulang</string>
 
+    <string name="upload_id_card_succeeded">Unggah kartu ID dengan sukses</string>
+    <string name="failed_to_upload_id_card">Gagal mengunggah ID</string>
+    <string name="photos_uploaded_successfully">Foto berhasil diunggah</string>
+    <string name="photo_upload_failed">Pengunggahan foto gagal</string>
+
+
     <!--申请贷款成功-->
     <string name="submit_successfully">Kirim berhasil！</string>
-    <string name="loan_application_submission">Pengajuan \n2. permohonan \n2. pinjaman</string>
-    <string name="pending_approval">Menunggu persetujuan</string>
+    <string name="loan_application_submission">Pengajuan\npermohonan\npinjaman</string>
+    <string name="pending_approval">Menunggu\npersetujuan</string>
     <string name="lndonesia_blend_loan">Pinjaman</string>
 
 </resources>

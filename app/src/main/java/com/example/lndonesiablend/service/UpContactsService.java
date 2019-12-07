@@ -72,6 +72,7 @@ public class UpContactsService extends IntentService {
             requestParams.put("account_id", uploadContactsBean.getSelf_mobile());
             requestParams.put("uuid", mDeviceFactory.getDeviceUuid());
             requestParams.put("imei", mDeviceFactory.getIMEI());
+
             //进行加密
             String sign = signParameter(requestParams, SharePreUtil.getString(this, UserBean.token, ""));
             requestParams.put("sign", sign);

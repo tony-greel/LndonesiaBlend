@@ -22,7 +22,10 @@ android {
         }
 
         lintOptions {
-
+            checkReleaseBuilds false
+            // Or, if you prefer, you can continue to check for errors in release builds,
+            // but continue the build even when errors are found:
+            abortOnError false
             disable 'MissingTranslation'
         }
     }
@@ -101,18 +104,10 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.0.0'
 
-    //活体识别
-    implementation(name: 'LiveCheckSDK_release_1.1.4', ext: 'aar')
-    implementation 'org.jetbrains:annotations:15.0'
-    implementation 'org.tensorflow:tensorflow-lite:1.10.0'
+
 
     //yitu
     implementation project(':liveness')
-
-    //检测内存泄漏框架
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.1'
-    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.1'
-    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.1'
 
     //FaceBook
     implementation 'com.facebook.android:facebook-android-sdk:[4,5)'

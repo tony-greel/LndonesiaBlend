@@ -146,10 +146,11 @@ public class PictureUploadActivity extends BaseActivity {
                     public void onNext(BaseBean baseBean) {
                         mianLoadView.cancel();
                         if (baseBean.getCode().equals("200") && SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("")) {
-                            Toast.makeText(mContext, "照片已经成功上传", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, R.string.photos_uploaded_successfully, Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getActivity(), IdUploadActivity.class));
+                            finish();
                         } else if (baseBean.getCode().equals("200") && SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("1")) {
-                            Toast.makeText(mContext, "照片已经成功上传", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, R.string.photos_uploaded_successfully, Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }
@@ -157,7 +158,7 @@ public class PictureUploadActivity extends BaseActivity {
                     @Override
                     public void onError(Throwable e) {
                         mianLoadView.cancel();
-                        Toast.makeText(mContext, "照片上传失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, R.string.photo_upload_failed, Toast.LENGTH_SHORT).show();
                         Log.d(LJJ,e.getMessage());
                     }
 

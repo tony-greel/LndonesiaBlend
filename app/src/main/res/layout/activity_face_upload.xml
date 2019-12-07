@@ -58,7 +58,7 @@
                 <TextView
                     android:id="@+id/face_upload_apply_state"
                     style="@style/WrapAndWrap.tv_12_style"
-                    android:layout_marginLeft="@dimen/dp_30"
+                    android:layout_marginLeft="@dimen/dp_20"
                     android:padding="@dimen/dp_5"
                     android:text="@string/loan_application_submission"
                     android:textColor="@color/colorSubmitSuccessTitle"
@@ -80,7 +80,7 @@
                 <TextView
                     android:id="@+id/face_upload_loan_state"
                     style="@style/WrapAndWrap.tv_12_style"
-                    android:layout_marginRight="@dimen/dp_50"
+                    android:layout_marginRight="@dimen/dp_23"
                     android:padding="@dimen/dp_5"
                     android:text="@string/lndonesia_blend_loan"
                     android:textColor="@color/colorSubmitSuccessTitle"
@@ -96,6 +96,7 @@
             android:id="@+id/face_upload_state_describe"
             style="@style/WrapAndWrap.tv_14_style"
             android:layout_gravity="center"
+            android:gravity="center"
             android:layout_marginTop="@dimen/dp_26"
             android:padding="@dimen/dp_10"
             android:text="Harap perhatikan pemberitahuan telepon dan SMS dalam waktu dekat, kami akan meminta staf layanan pelanggan untuk menghubungi Anda"
@@ -107,6 +108,6 @@
         android:id="@+id/face_upload_determine"
         style="@style/MatchAndWrap.OtherColourSubmitButtonStyle"
         android:background="@drawable/picture_upload_btn_bg_two"
-        android:text="返回主页" />
+        android:text="@string/lndonesia_blend_see" />
 
 </LinearLayout>

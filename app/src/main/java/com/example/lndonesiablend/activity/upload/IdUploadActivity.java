@@ -89,6 +89,8 @@ public class IdUploadActivity extends BaseActivity {
                 if (SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("")) {
                     startActivity(new Intent(this,PictureUploadActivity.class));
                     finish();
+                }else if (SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("1")){
+                    finish();
                 }
                 break;
 
@@ -103,16 +105,12 @@ public class IdUploadActivity extends BaseActivity {
 
         Observable<BaseBean> obPositive = HttpRequestClient.getRetrofitHttpClient().create(Api.class).uploadSingleImg(positiveParts);
         Observable<BaseBean> obNegative = HttpRequestClient.getRetrofitHttpClient().create(Api.class).uploadSingleImg(negative);
-        Observable.zip(obPositive, obNegative, new BiFunction<BaseBean, BaseBean, BaseBean>() {
-
-            @Override
-            public BaseBean apply(BaseBean baseBean, BaseBean baseBean2) throws Exception {
-                BaseBean bean = new BaseBean();
-                if (baseBean.getCode().equals("200") && baseBean2.getCode().equals("200")) {
-                    bean.setCode("200");
-                }
-                return bean;
+        Observable.zip(obPositive, obNegative, (baseBean, baseBean2) -> {
+            BaseBean bean = new BaseBean();
+            if (baseBean.getCode().equals("200") && baseBean2.getCode().equals("200")) {
+                bean.setCode("200");
             }
+            return bean;
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -126,12 +124,12 @@ public class IdUploadActivity extends BaseActivity {
                         Log.d(LJJ, baseBean.getCode());
                         if (baseBean.getCode().equals("200") && SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("")) {
                             mianLoadView.cancel();
-                            Toast.makeText(mContext, "上传身份证成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, R.string.upload_id_card_succeeded, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getActivity(), FaceDistinguishActivity.class);
                             startActivity(intent);
                             finish();
                         } else if (baseBean.getCode().equals("200") && SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("1")) {
-                            Toast.makeText(mContext, "上传身份证成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(mContext, R.string.upload_id_card_succeeded, Toast.LENGTH_SHORT).show();
                             mianLoadView.cancel();
                             finish();
                         }
@@ -140,7 +138,7 @@ public class IdUploadActivity extends BaseActivity {
                     @Override
                     public void onError(Throwable e) {
                         mianLoadView.cancel();
-                        Toast.makeText(mContext, "上传身份证失败", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, R.string.failed_to_upload_id_card, Toast.LENGTH_SHORT).show();
                         Log.d(LJJ, e.getMessage());
                     }
 
