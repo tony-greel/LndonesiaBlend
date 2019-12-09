@@ -33,7 +33,7 @@ public class WebViewUtils {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
             mianLoadViewBuilder = new MainLoadView.Builder(context);
-            mianLoadView = mianLoadViewBuilder.setContent(context.getString(R.string.please_wait)).create();
+            mianLoadView = mianLoadViewBuilder.setContent(context.getString(R.string.loading)).create();
 
             mSettings.setMixedContentMode(android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
             mSettings.setDomStorageEnabled(true);

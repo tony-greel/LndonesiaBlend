@@ -66,7 +66,7 @@ public class IdUploadActivity extends BaseActivity {
     @Override
     protected void initView() {
         mianLoadViewBuilder = new MainLoadView.Builder(this);
-        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.please_wait)).create();
+        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
     }
 
     @OnClick({R.id.id_upload_one, R.id.id_upload_two, R.id.id_upload_but, R.id.id_button_return})

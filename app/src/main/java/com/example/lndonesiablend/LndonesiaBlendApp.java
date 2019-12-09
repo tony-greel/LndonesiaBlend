@@ -34,7 +34,6 @@ public class LndonesiaBlendApp extends Application{
     public void onCreate() {
         super.onCreate();
         initData();
-//        initLeakCanary();
         initAdjust();
         broadcast();
     }

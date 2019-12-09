@@ -65,7 +65,7 @@ public class FaceUploadActivity extends BaseActivity {
     @Override
     protected void initView() {
         mianLoadViewBuilder = new MainLoadView.Builder(this);
-        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.please_wait)).create();
+        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
 
         Intent intent = getIntent();
         facePicture = intent.getStringExtra(Constant.IMAGE_PATH);
@@ -118,12 +118,9 @@ public class FaceUploadActivity extends BaseActivity {
                             faceUploadDetermine.setText(R.string.lndonesia_blend_see);
                             faceUploadStateDescribe.setVisibility(View.VISIBLE);
                             faceUploadStateTitle.setVisibility(View.VISIBLE);
-                            faceUploadDetermine.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View v) {
-                                    startActivity(new Intent(FaceUploadActivity.this, UploadSuccessActivity.class));
-                                    finish();
-                                }
+                            faceUploadDetermine.setOnClickListener(v -> {
+                                startActivity(new Intent(FaceUploadActivity.this, UploadSuccessActivity.class));
+                                finish();
                             });
                         }
                         Log.d(LJJ, "onNext：" + applyLoanBeanBaseBean.getMessage() + "------------" + applyLoanBeanBaseBean.getCode());

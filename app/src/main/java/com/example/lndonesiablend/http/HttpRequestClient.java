@@ -56,6 +56,10 @@ public class HttpRequestClient {
         return retrofit;
     }
 
+    /**
+     * 设置超时时间
+     * @return
+     */
     public static OkHttpClient getOkhttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         OkHttpClient client = builder.readTimeout(25, TimeUnit.SECONDS)

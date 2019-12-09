@@ -68,7 +68,7 @@ public class PictureUploadActivity extends BaseActivity {
     @Override
     protected void initView() {
         mianLoadViewBuilder = new MainLoadView.Builder(this);
-        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.please_wait)).create();
+        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
     }
 
     @OnClick({R.id.picture_upload_img, R.id.picture_upload_back, R.id.picture_upload_submit})
@@ -77,8 +77,7 @@ public class PictureUploadActivity extends BaseActivity {
             case R.id.picture_upload_img:
                 jurisdictionApply(Manifest.permission.CAMERA
                         , Manifest.permission.WRITE_EXTERNAL_STORAGE
-                        , Manifest.permission.READ_EXTERNAL_STORAGE
-                        , Manifest.permission.READ_CONTACTS);
+                        , Manifest.permission.READ_EXTERNAL_STORAGE);
                 break;
             case R.id.picture_upload_submit:
                 if (photoFile != null) {

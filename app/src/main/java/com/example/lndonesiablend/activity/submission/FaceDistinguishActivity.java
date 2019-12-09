@@ -1,5 +1,4 @@
 package com.example.lndonesiablend.activity.submission;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -8,21 +7,16 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.Button;
 import android.widget.Toast;
-
-import com.adjust.sdk.Adjust;
-import com.adjust.sdk.AdjustEvent;
 import com.example.lndonesiablend.LndonesiaBlendApp;
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.upload.FaceUploadActivity;
 import com.example.lndonesiablend.base.BaseActivity;
 import com.example.lndonesiablend.bean.Constant;
-import com.example.lndonesiablend.event.AdjustEvents;
 import com.example.lndonesiablend.service.UpAppService;
 import com.example.lndonesiablend.service.UpContactsService;
 import com.example.lndonesiablend.utils.EasyActivityResultUtils;
 import com.example.lndonesiablend.utils.UIHelper;
 import com.weiyun.liveness.liveness.SampleLivenessActivity;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -52,7 +46,7 @@ public class FaceDistinguishActivity extends BaseActivity {
     public void onViewClicked() {
         jurisdictionApply(Manifest.permission.CAMERA
                 ,Manifest.permission.WRITE_EXTERNAL_STORAGE
-                ,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE);
+                ,Manifest.permission.READ_EXTERNAL_STORAGE);
     }
 
     @Override

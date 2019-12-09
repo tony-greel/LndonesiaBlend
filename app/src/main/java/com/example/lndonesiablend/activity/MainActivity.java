@@ -58,7 +58,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initView() {
         mianLoadViewBuilder = new MainLoadView.Builder(this);
-        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.please_wait)).create();
+        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
         initMonitor();
     }
 

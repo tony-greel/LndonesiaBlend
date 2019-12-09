@@ -24,7 +24,7 @@ public class UploadSuccessActivity extends BaseActivity {
     @Override
     protected void initView() {
         mianLoadViewBuilder = new MainLoadView.Builder(this);
-        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.please_wait)).create();
+        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
         WebViewUtils.initWebView(this,this,uploadSuccessWebView,webChromeClient,"http://test.goferer.com/#/downApp");
     }
 

@@ -38,7 +38,7 @@
             android:layout_marginLeft="@dimen/dp_15"
             android:layout_marginTop="@dimen/dp_50"
             android:layout_marginRight="@dimen/dp_15"
-            android:visibility="gone"
+            android:visibility="visible"
             app:cardBackgroundColor="@color/color_FFFFFF"
             app:cardCornerRadius="@dimen/dp_4"
             app:cardElevation="@dimen/dp_1">
@@ -79,8 +79,10 @@
 
                 <TextView
                     android:id="@+id/face_upload_loan_state"
-                    style="@style/WrapAndWrap.tv_12_style"
-                    android:layout_marginRight="@dimen/dp_23"
+                    android:layout_width="@dimen/dp_58"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_12"
+                    android:layout_marginRight="@dimen/dp_20"
                     android:padding="@dimen/dp_5"
                     android:text="@string/lndonesia_blend_loan"
                     android:textColor="@color/colorSubmitSuccessTitle"

@@ -55,9 +55,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     @SuppressLint("CheckResult")
-    protected void jurisdictionApply(String a , String b, String c, String d){
+    protected void jurisdictionApply(String a , String b, String c){
         RxPermissions rxPermissions = new RxPermissions(this);
-        rxPermissions.request(a,b,c,d).subscribe(aBoolean -> {
+        rxPermissions.request(a,b,c).subscribe(aBoolean -> {
             if (aBoolean) {
                 uploadPicture();
             } else {
