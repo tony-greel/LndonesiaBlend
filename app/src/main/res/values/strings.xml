@@ -43,7 +43,7 @@
     <string name="photo_upload_failed">照片上传失败</string>
 
     <!--申请贷款成功-->
-    <string name="submit_successfully">提交成功！u</string>
+    <string name="submit_successfully">提交成功！</string>
     <string name="loan_application_submission">贷款申请提交</string>
     <string name="pending_approval">待审批</string>
     <string name="lndonesia_blend_loan">放款</string>
@@ -51,4 +51,9 @@
     <string name="uploading">你的信息正在上传中,大概需要20s,感谢您的耐心等待</string>
     <string name="loading">正在快速加载，谢谢您的耐心配合</string>
 
+    <string name="warm_reminder">温馨提醒</string>
+    <string name="please_go_to_the">请到系统权限设置中允许需要的权限后使用该应用</string>
+    <string name="content">我们需要您的许可才能批准您提供的联系人、相机和移动设备信息。更好的了解您的身份并确保用户满足其信用需求。我们致力于加密数据并确保信息安全</string>
+
+    <string name="cancel">取消</string>
 </resources>

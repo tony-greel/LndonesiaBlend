@@ -6,7 +6,7 @@
     android:orientation="vertical"
     tools:context="com.example.lndonesiablend.activity.upload.UploadSuccessActivity">
 
-    <WebView
+    <com.tencent.smtt.sdk.WebView
         android:id="@+id/upload_success_web_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

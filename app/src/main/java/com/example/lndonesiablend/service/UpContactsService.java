@@ -89,12 +89,12 @@ public class UpContactsService extends IntentService {
 
                         @Override
                         public void onNext(BaseBean baseBean) {
-                            Log.d(TAG, "onNext: 联系人信息提交完成");
+                            Log.d(TAG, "onNext: 联系人信息提交完成"+baseBean.getMessage());
                         }
 
                         @Override
                         public void onError(Throwable e) {
-
+                            Log.d(TAG,"onError"+e.getMessage());
                         }
 
                         @Override

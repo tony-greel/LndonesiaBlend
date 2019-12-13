@@ -21,33 +21,34 @@
     <application
         android:name=".LndonesiaBlendApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_identification"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_identification"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
-        <activity android:name=".activity.upload.UploadSuccessActivity"></activity>
+        <activity android:name=".activity.TestActivity"></activity>
+<!--        <activity android:name=".activity.login.LoginActivity" />-->
+        <activity android:name=".activity.upload.UploadSuccessActivity" />
         <activity android:name=".activity.upload.FaceUploadActivity" />
         <activity android:name=".activity.upload.PictureUploadActivity" />
         <activity android:name=".activity.upload.IdUploadActivity" />
         <activity android:name=".activity.camera.UploadPhotoActivity" />
-        <activity android:name=".activity.startup.StartupActivity">
+        <activity android:name=".activity.login.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.submission.FaceDistinguishActivity" />
+        <activity android:name=".activity.face.FaceDistinguishActivity" />
         <activity android:name=".activity.MainActivity" />
 
-        <service android:name=".service.UpAppService" /> <!-- facebook安装统计 -->
+        <service android:name=".service.UpAppService" />
         <service android:name=".service.UpInstallReferrerInfoService" /> <!-- 接收facebook发出的广播 -->
-        <service android:name=".service.UpContactsService" /> <!-- 接收facebook发出的广播 -->
-        <!-- facebook分析用 -->
+        <service android:name=".service.UpContactsService" /> <!-- facebook分析用 -->
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/FACEBOOK_APP_ID" />

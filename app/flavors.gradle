@@ -36,7 +36,7 @@ android {
         //正式服
         product{
             //weburl
-            buildConfigField('String', 'WEB_URL', '\"http://test.goferer.com/#/\"')
+            buildConfigField('String', 'WEB_URL', '\"https://h5.hauangnow.com\"')
 
             dimension "server"
         }
@@ -44,7 +44,7 @@ android {
         //测试服
         beta{
             //weburl
-            buildConfigField('String', 'WEB_URL', '\"http://test.goferer.com/#/\"')
+            buildConfigField('String', 'WEB_URL', '\"https://h5.hauangnow.com\"')
 
             dimension "server"
         }

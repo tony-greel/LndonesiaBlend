@@ -1,8 +1,11 @@
 package com.example.lndonesiablend.bean;
+
+import java.io.Serializable;
+
 /**
  * 跟通话记录数据库中的字段直接对应的pojo
  * */
-public class CallLogBean {
+public class CallLogBean  implements Serializable {
     private String cachedName;
     private String number;
     private int type;

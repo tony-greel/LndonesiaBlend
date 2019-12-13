@@ -3,8 +3,10 @@ package com.example.lndonesiablend.base;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,15 +16,19 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lndonesiablend.LndonesiaBlendApp;
+import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.camera.UploadPhotoActivity;
 import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.broadcast.NetChangeObserver;
 import com.example.lndonesiablend.broadcast.NetStateReceiver;
 import com.example.lndonesiablend.broadcast.NetUtils;
+import com.example.lndonesiablend.load.MainLoadView;
 import com.example.lndonesiablend.utils.MD5Utils;
+import com.example.lndonesiablend.utils.PermissionUtils;
 import com.example.lndonesiablend.utils.SharePreUtil;
 import com.example.lndonesiablend.utils.UIHelper;
 import com.gyf.barlibrary.ImmersionBar;
+import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
@@ -33,19 +39,28 @@ import java.util.TreeMap;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import io.reactivex.functions.Consumer;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity
+        implements ILoading {
 
     protected NetChangeObserver mNetChangeObserver = null;
     public Context mContext;
     private static final String LJJ = "PictureUploadActivity";
 
+    public P presenter;
+
+    private MainLoadView mianLoadView;
+    private MainLoadView.Builder mianLoadViewBuilder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        presenter = createPresenter();
+        presenter.attachView(this);
         mContext = getActivity();
         setContentView(getLayoutId());
         ButterKnife.bind(this);
@@ -54,23 +69,73 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         broadcast();
     }
 
+    protected abstract P createPresenter();
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.detachView();
+    }
+
+    /**
+     * 加载视图
+     */
+    public void showLoadingView() {
+        mianLoadViewBuilder = new MainLoadView.Builder(this);
+        mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
+        if (null != mianLoadView
+                && mianLoadView.isShowing()) {
+            return;
+        } else if (null == mianLoadView) {
+            mianLoadViewBuilder = new MainLoadView.Builder(this);
+            mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
+            mianLoadView.show();
+        }
+        mianLoadView.show();
+    }
+
+    /**
+     * 关闭视图
+     */
+    public void closeLoadingView() {
+        if (mianLoadView != null && mianLoadView.isShowing()) {
+            mianLoadView.dismiss();
+        }
+    }
+
     @SuppressLint("CheckResult")
-    protected void jurisdictionApply(String a , String b, String c){
+    protected void jurisdictionApply(String a, String b, String c) {
         RxPermissions rxPermissions = new RxPermissions(this);
-        rxPermissions.request(a,b,c).subscribe(aBoolean -> {
-            if (aBoolean) {
-                uploadPicture();
-            } else {
-                UIHelper.showToast(this, "您有尚未通过的权限");
+        rxPermissions.requestEach(a, b, c).subscribe(new Consumer<Permission>() {
+            @Override
+            public void accept(Permission permission) throws Exception {
+                if (permission.shouldShowRequestPermissionRationale) {
+
+                } else {
+                    Intent localIntent = new Intent();
+                    localIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    localIntent.setAction("android.settings.APPLICATION_DETAILS_SETTINGS");
+                    localIntent.setData(Uri.fromParts("package", mContext.getPackageName(), null));
+                }
+            }
+        });
+        rxPermissions.request(a, b, c).subscribe(new Consumer<Boolean>() {
+            @Override
+            public void accept(Boolean aBoolean) throws Exception {
+                if (aBoolean) {
+                    BaseActivity.this.uploadPicture();
+                } else {
+                    UIHelper.showToast(BaseActivity.this, "您有尚未通过的权限");
+                }
             }
         });
     }
 
 
     @SuppressLint("CheckResult")
-    protected void uploadPositive(String a , String b, String c, String d){
+    protected void uploadPositive(String a, String b, String c, String d) {
         RxPermissions rxPermissions = new RxPermissions(this);
-        rxPermissions.request(a,b,c,d).subscribe(aBoolean -> {
+        rxPermissions.request(a, b, c, d).subscribe(aBoolean -> {
             if (aBoolean) {
                 uploadPositive(UploadPhotoActivity.PhotoType.POSITIVE_PHOTO);
             } else {
@@ -80,9 +145,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
     }
 
     @SuppressLint("CheckResult")
-    protected void uploadTheOtherSide(String a , String b, String c, String d){
+    protected void uploadTheOtherSide(String a, String b, String c, String d) {
         RxPermissions rxPermissions = new RxPermissions(this);
-        rxPermissions.request(a,b,c,d).subscribe(aBoolean -> {
+        rxPermissions.request(a, b, c, d).subscribe(aBoolean -> {
             if (aBoolean) {
                 uploadTheOtherSide(UploadPhotoActivity.PhotoType.BACK_PHOTO);
             } else {
@@ -90,15 +155,21 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
             }
         });
     }
-    protected void uploadPicture(){}
-    protected void uploadPositive(UploadPhotoActivity.PhotoType mPositive){}
-    protected void uploadTheOtherSide(UploadPhotoActivity.PhotoType mTheOtherSide){}
+
+    protected void uploadPicture() {
+    }
+
+    protected void uploadPositive(UploadPhotoActivity.PhotoType mPositive) {
+    }
+
+    protected void uploadTheOtherSide(UploadPhotoActivity.PhotoType mTheOtherSide) {
+    }
 
 
     /**
      * 广播监听网络
      */
-    protected void broadcast(){
+    protected void broadcast() {
         // 网络改变的一个回掉类
         mNetChangeObserver = new NetChangeObserver() {
             @Override
@@ -118,14 +189,17 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     /**
      * 网络连接状态
+     *
      * @param type 网络状态
      */
-    protected void onNetworkConnected(NetUtils.NetType type){ }
+    protected void onNetworkConnected(NetUtils.NetType type) {
+    }
 
     /**
      * 网络断开的时候调用
      */
-    protected void onNetworkDisConnected(){ }
+    protected void onNetworkDisConnected() {
+    }
 
     protected abstract void initView();
 
@@ -138,10 +212,6 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
                 .init();
     }
 
-    @Override
-    public void onClick(View v) {
-
-    }
 
     //获取当前 Activity 对象
     public <A extends BaseActivity> A getActivity() {
@@ -189,7 +259,7 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         return filedata;
     }
 
-    protected List<MultipartBody.Part> getParts(File file, String s){
+    protected List<MultipartBody.Part> getParts(File file, String s) {
         //进行数据加密
         TreeMap requestUserWorkParams = buildCommonParams();
         requestUserWorkParams.put("user_id", SharePreUtil.getString(mContext, UserBean.userId, ""));

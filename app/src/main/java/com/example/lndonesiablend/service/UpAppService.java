@@ -85,8 +85,6 @@ public class UpAppService extends IntentService {
                 + SharePreUtil.getString(this, UserBean.phone, ""));
         requestParams.put("uuid", mDeviceFactory.getDeviceUuid() + "");
         requestParams.put("imei",mDeviceFactory.getIMEI());
-//        requestParams.put("ram", mDeviceFactory.getTotalMemory(this));
-//        requestParams.put("rom", mDeviceFactory.getInternalToatalSpace(this));
         //进行加密
         String sign = signParameter(requestParams, SharePreUtil.getString(this, UserBean.token, ""));
         requestParams.put("sign", sign);
@@ -102,12 +100,12 @@ public class UpAppService extends IntentService {
 
                     @Override
                     public void onNext(BaseBean baseBean) {
-                        Log.d("LJJ", baseBean.getMessage());
+                        Log.d(TAG,"onNext"+ baseBean.getMessage());
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        Log.d("LJJ", e.getMessage());
+                        Log.d(TAG,"onError"+ e.getMessage());
                     }
 
                     @Override

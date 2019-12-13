@@ -1,23 +1,19 @@
 package com.example.lndonesiablend.load;
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
+
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
 import com.example.lndonesiablend.BuildConfig;
 import com.example.lndonesiablend.R;
-import com.example.lndonesiablend.event.OnEventClickListener;
-import com.example.lndonesiablend.utils.UIHelper;
 import com.example.lndonesiablend.utils.WebViewUtils;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,8 +25,7 @@ import butterknife.ButterKnife;
  */
 public class PrivacyLinkLoadView extends Dialog {
     private Context mContext;
-    @BindView(R.id.mRootView)
-    public LinearLayout mRootView;
+
     @BindView(R.id.mWebView)
     public WebView mWebView;
     @BindView(R.id.mCheckbox)
@@ -65,18 +60,19 @@ public class PrivacyLinkLoadView extends Dialog {
             }
         });
 
-        UIHelper.bindClickListener(mRootView, new OnEventClickListener() {
-            @Override
-            public void onEventClick(View v) {
-                switch (v.getId()) {
-                    case R.id.mBtnConfirm:
-                        if (mOnConfirmClickListener != null) {
-                            mOnConfirmClickListener.onConfirm(mCheckbox.isChecked());
-                        }
-                        break;
-                }
-            }
-        }, R.id.mBtnConfirm);
+
+       mBtnConfirm.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               switch (v.getId()) {
+                   case R.id.mBtnConfirm:
+                       if (mOnConfirmClickListener != null) {
+                           mOnConfirmClickListener.onConfirm(mCheckbox.isChecked());
+                       }
+                       break;
+               }
+           }
+       });
     }
 
     /**

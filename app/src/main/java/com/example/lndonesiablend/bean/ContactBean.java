@@ -1,11 +1,12 @@
 package com.example.lndonesiablend.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * 跟通讯录数据库中的字段直接对应的pojo
  * */
-public class ContactBean {
+public class ContactBean implements Serializable {
     private String name;
     private List<NumberEntity> number;
     private long lastUpdate;

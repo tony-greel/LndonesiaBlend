@@ -9,7 +9,7 @@
 
     <string name="please_wait">""</string>
     <string name="text_tips">Petunjuk</string>
-    <string name="text_sure">Oke</string>
+    <string name="determine">Oke</string>
     <string name="show_download_on_google_player"></string>
     <string name="logcat_verification_failure">Tubuh yang hidup gagal, tubuh yang hidup terlempar tidak normal!</string>
 
@@ -43,11 +43,18 @@
 
 
     <!--申请贷款成功-->
-    <string name="submit_successfully">Kirim berhasil！</string>
+    <string name="submit_successfully">Kirim berhasi！</string>
     <string name="loan_application_submission">Pengajuan\npermohonan\npinjaman</string>
     <string name="pending_approval">Menunggu\npersetujuan</string>
     <string name="lndonesia_blend_loan">Pinjaman</string>
 
 
     <string name="loading">sedang loading pada kecepatan,terima \nkasih atas kesabaran Anda</string>
+
+
+    <string name="warm_reminder">Pengingat hangat</string>
+    <string name="please_go_to_the">Silakan gunakan aplikasi setelah mengizinkan izin yang diperlukan dalam pengaturan izin sistem</string>
+    <string name="content">Kami memerlukan izin Anda untuk menyetujui kontak, kamera, informasi perangkat seluler yang Anda berikan.untuk lebih memahami identitas Anda dan memastikan bahwa pengguna memenuhi kebutuhan kredit.Kami berkomitmen untuk mengenkripsi data dan memastikan keamanan informasi.</string>
+
+    <string name="cancel">Batalkan</string>
 </resources>

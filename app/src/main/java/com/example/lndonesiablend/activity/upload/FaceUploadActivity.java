@@ -11,16 +11,22 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+import com.adjust.sdk.Adjust;
+import com.adjust.sdk.AdjustEvent;
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.camera.UploadPhotoActivity;
 import com.example.lndonesiablend.base.BaseActivity;
+import com.example.lndonesiablend.base.BasePresenter;
 import com.example.lndonesiablend.bean.ApplyLoanBean;
 import com.example.lndonesiablend.bean.BaseBean;
 import com.example.lndonesiablend.bean.Constant;
 import com.example.lndonesiablend.bean.UserBean;
+import com.example.lndonesiablend.event.BuryingPointEvent;
 import com.example.lndonesiablend.http.Api;
 import com.example.lndonesiablend.http.HttpRequestClient;
 import com.example.lndonesiablend.load.MainLoadView;
+import com.example.lndonesiablend.service.UpAppService;
+import com.example.lndonesiablend.service.UpContactsService;
 import com.example.lndonesiablend.utils.SharePreUtil;
 
 import java.util.TreeMap;
@@ -63,9 +69,17 @@ public class FaceUploadActivity extends BaseActivity {
     private MainLoadView.Builder mianLoadViewBuilder;
 
     @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
+
+    @Override
     protected void initView() {
         mianLoadViewBuilder = new MainLoadView.Builder(this);
         mianLoadView = mianLoadViewBuilder.setContent(getString(R.string.loading)).create();
+
+        startService(new Intent(mContext, UpAppService.class));
+        startService(new Intent(mContext, UpContactsService.class));
 
         Intent intent = getIntent();
         facePicture = intent.getStringExtra(Constant.IMAGE_PATH);
@@ -75,6 +89,7 @@ public class FaceUploadActivity extends BaseActivity {
                 && SharePreUtil.getString(mContext, UserBean.token, "") != null) {
             String a = SharePreUtil.getString(mContext, UserBean.userId, "");
             String b = SharePreUtil.getString(mContext, UserBean.token, "");
+            Adjust.trackEvent(new AdjustEvent(BuryingPointEvent.IN_SUBMISSION.getCode()));
             submitAll(this, a, b, facePicture);
             mianLoadView.show();
         }
@@ -107,6 +122,8 @@ public class FaceUploadActivity extends BaseActivity {
                     @Override
                     public void onNext(BaseBean<ApplyLoanBean> applyLoanBeanBaseBean) {
                         mianLoadView.cancel();
+                        Adjust.trackEvent(new AdjustEvent(BuryingPointEvent.SUBMIT_SUCCESSFULLY.getCode()));
+
                         if (!applyLoanBeanBaseBean.getCode().equals("200")) {
                             faceUploadStateIcon.setImageResource(R.mipmap.submit_all);
                             faceUploadStateTitle.setVisibility(View.VISIBLE);
@@ -128,6 +145,7 @@ public class FaceUploadActivity extends BaseActivity {
 
                     @Override
                     public void onError(Throwable e) {
+                        Adjust.trackEvent(new AdjustEvent(BuryingPointEvent.ORDER_SUBMISSION_FAILED.getCode()));
                         mianLoadView.cancel();
                         Log.d(LJJ, "onError：" + e.getMessage() + "------------" + e.getLocalizedMessage());
                     }

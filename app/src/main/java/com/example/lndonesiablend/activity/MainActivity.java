@@ -1,20 +1,22 @@
 package com.example.lndonesiablend.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
+
 import android.os.Build;
+
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+
 import com.example.lndonesiablend.BuildConfig;
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.base.BaseActivity;
+import com.example.lndonesiablend.base.BasePresenter;
 import com.example.lndonesiablend.bean.Constant;
 import com.example.lndonesiablend.bean.User;
 import com.example.lndonesiablend.bean.UserBean;
@@ -22,6 +24,7 @@ import com.example.lndonesiablend.broadcast.NetUtils;
 import com.example.lndonesiablend.load.AuthorizationLoadView;
 import com.example.lndonesiablend.load.MainLoadView;
 import com.example.lndonesiablend.load.PrivacyLinkLoadView;
+import com.example.lndonesiablend.utils.PermissionUtils;
 import com.example.lndonesiablend.utils.SharePreUtil;
 import com.example.lndonesiablend.utils.UIHelper;
 import com.example.lndonesiablend.utils.WebViewUtils;
@@ -29,15 +32,22 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.tbruyelle.rxpermissions2.RxPermissions;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
+
 import butterknife.BindView;
 import butterknife.OnClick;
+
 import static com.example.lndonesiablend.broadcast.NetStateReceiver.isNetworkAvailable;
 
 public class MainActivity extends BaseActivity {
 
-    @BindView(R.id.img_main) ImageView imgMain;
-    @BindView(R.id.tv_main) TextView tvMain;
-    @BindView(R.id.web_main) WebView webMain;
+    @BindView(R.id.img_main)
+    ImageView imgMain;
+    @BindView(R.id.tv_main)
+    TextView tvMain;
+    @BindView(R.id.web_main)
+    WebView webMain;
 
     private MainLoadView mianLoadView;
     private MainLoadView.Builder mianLoadViewBuilder;
@@ -67,12 +77,12 @@ public class MainActivity extends BaseActivity {
         if (IS_FIRST_REQUEST_PERMISSION_PASS.equals("")) {
             PrivacyjurisdictionPopup();
         } else {
-            if (isNetworkAvailable()){
+            if (isNetworkAvailable()) {
                 imgMain.setVisibility(View.GONE);
                 tvMain.setVisibility(View.GONE);
                 webMain.setVisibility(View.VISIBLE);
-                WebViewUtils.initWebView(this,this,webMain,webChromeClient,BuildConfig.WEB_URL);
-            }else {
+                WebViewUtils.initWebView(this, this, webMain, webChromeClient, BuildConfig.WEB_URL);
+            } else {
                 imgMain.setVisibility(View.VISIBLE);
                 tvMain.setVisibility(View.VISIBLE);
                 webMain.setVisibility(View.GONE);
@@ -107,23 +117,25 @@ public class MainActivity extends BaseActivity {
     @SuppressLint("CheckResult")
     private void jurisdictionApply() {
         RxPermissions rxPermissions = new RxPermissions(this);
-        rxPermissions.request(Manifest.permission.READ_PHONE_STATE,
+        rxPermissions.requestEach(Manifest.permission.READ_PHONE_STATE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(aBoolean -> {
-            if (aBoolean) {
-                SharePreUtil.putString(mContext, "IS_FIRST_REQUEST_PERMISSION_PASS", Constant.IS_FIRST_REQUEST_PERMISSION_PASS);
-                imgMain.setVisibility(View.GONE);
-                tvMain.setVisibility(View.GONE);
-                webMain.setVisibility(View.VISIBLE);
-                authorizationLoadView.dismiss();
-                mianLoadView.hide();
-                WebViewUtils.initWebView(this,this,webMain,webChromeClient,BuildConfig.WEB_URL);
-
-            } else {
-                UIHelper.showToast(this, "您有尚未通过的权限");
-            }
-        });
+                Manifest.permission.READ_EXTERNAL_STORAGE).subscribe(permission -> {
+                    if (permission.granted) {
+                        SharePreUtil.putString(mContext, "IS_FIRST_REQUEST_PERMISSION_PASS", Constant.IS_FIRST_REQUEST_PERMISSION_PASS);
+                        imgMain.setVisibility(View.GONE);
+                        tvMain.setVisibility(View.GONE);
+                        webMain.setVisibility(View.VISIBLE);
+                        authorizationLoadView.dismiss();
+                        mianLoadView.hide();
+                        WebViewUtils.initWebView(MainActivity.this, MainActivity.this, webMain, webChromeClient, BuildConfig.WEB_URL);
+                    } else if (permission.shouldShowRequestPermissionRationale) {
+                        UIHelper.showToast(MainActivity.this, "您有尚未通过的权限");
+                    }else {
+                        PermissionUtils.showNormalDialog(this);
+                    }
+                });
     }
+
 
     WebChromeClient webChromeClient = new WebChromeClient() {
         @Override
@@ -173,6 +185,11 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
+
     /**
      * 连接网络时的状态
      */
@@ -217,4 +234,5 @@ public class MainActivity extends BaseActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
 }

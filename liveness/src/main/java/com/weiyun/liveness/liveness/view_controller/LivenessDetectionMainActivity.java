@@ -277,6 +277,7 @@ public abstract class LivenessDetectionMainActivity extends Activity implements 
             if (cameraInfo.facing == expectCameraFacing) {
                 getIntent().putExtra(CameraUtil.EXTRAS_CAMERA_FACING, camIdx); // 设置需要打开的摄像头ID
                 getIntent().putExtra(CameraUtil.TARGET_PREVIEW_RATIO, CAMERA_RATIO_16_9); // 设置Preview长宽比,默认是16:9
+                break;
             }
         }
         mPhotoModule = new PhotoModule();

@@ -13,7 +13,7 @@ import com.adjust.sdk.AdjustConfig;
 import com.adjust.sdk.AdjustEvent;
 import com.adjust.sdk.LogLevel;
 import com.example.lndonesiablend.broadcast.NetStateReceiver;
-import com.example.lndonesiablend.event.AdjustEvents;
+import com.example.lndonesiablend.event.BuryingPointEvent;
 import com.example.lndonesiablend.helper.DataBaseHelper;
 import com.google.android.gms.ads.identifier.AdvertisingIdClient;
 
@@ -101,8 +101,8 @@ public class LndonesiaBlendApp extends Application{
         try {
             AdvertisingIdClient.Info adInfo = AdvertisingIdClient.getAdvertisingIdInfo(getAppContext());
             String id = adInfo.getId();
-            Adjust.trackEvent(new AdjustEvent(AdjustEvents.APP_INSTALL.getCode()));
-            AdjustEvent adjustEvent = new AdjustEvent(AdjustEvents.GAID.getCode());
+            Adjust.trackEvent(new AdjustEvent(BuryingPointEvent.APP_INSTALL.getCode()));
+            AdjustEvent adjustEvent = new AdjustEvent(BuryingPointEvent.ADJUST_UPLOAD_AD_GAID_EVENT.getCode());
             adjustEvent.addCallbackParameter("key", "gaid");
             adjustEvent.addCallbackParameter("value", id);
             adjustEvent.addCallbackParameter("source", BuildConfig.APP_NAME);

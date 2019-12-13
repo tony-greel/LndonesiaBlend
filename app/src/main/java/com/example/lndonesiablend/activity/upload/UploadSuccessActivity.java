@@ -1,16 +1,15 @@
 package com.example.lndonesiablend.activity.upload;
 
-import android.os.Bundle;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
 
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.base.BaseActivity;
+import com.example.lndonesiablend.base.BasePresenter;
 import com.example.lndonesiablend.load.MainLoadView;
 import com.example.lndonesiablend.utils.WebViewUtils;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 public class UploadSuccessActivity extends BaseActivity {
 
@@ -20,6 +19,11 @@ public class UploadSuccessActivity extends BaseActivity {
 
     private MainLoadView mianLoadView;
     private MainLoadView.Builder mianLoadViewBuilder;
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
+    }
 
     @Override
     protected void initView() {
@@ -32,7 +36,7 @@ public class UploadSuccessActivity extends BaseActivity {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
             if (newProgress == 100) {
-                mianLoadView.hide();
+                mianLoadView.cancel();
             } else {
                 mianLoadView.show();
             }

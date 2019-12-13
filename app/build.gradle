@@ -54,7 +54,7 @@ android {
             // 更改生成apk的名字
             android.applicationVariants.all { variant ->
                 variant.outputs.all { output ->
-                    outputFileName = "${APP_NAME}-Ver${variant.versionName}-${releaseTime()}.apk"
+                    outputFileName = "-Ver${variant.versionName}-${releaseTime()}.apk"
                 }
             }
         }
@@ -88,6 +88,16 @@ android {
     aaptOptions {
         noCompress "tflite"
     }
+
+    splits{
+        abi{
+            enable true
+            reset()
+            include'x86','armeabi-v7a','x86_64'
+            universalApk true
+        }
+    }
+
 }
 
 dependencies {
@@ -139,6 +149,9 @@ dependencies {
 
     //SpinKit加载动画框架
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+    implementation 'com.tencent.tbs.tbssdk:sdk:43697'
+
 }
 repositories {
     mavenCentral()

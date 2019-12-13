@@ -22,23 +22,6 @@ public class UIHelper {
     public static Stack<Activity> activities = new Stack<>();
 
     /**
-     * 为View添加ClickListener
-     */
-    public static <T extends View.OnClickListener> RecyclerViewHolderAdapter bindClickListener(ViewGroup viewGroup, T listener, @IdRes int... idSet) {
-        if (idSet.length == 0 && listener == null) {
-            return null;
-        }
-        RecyclerViewHolderAdapter holder = new RecyclerViewHolderAdapter(viewGroup);
-        for (int id : idSet) {
-            View view = holder.getView(id);
-            if (view != null) {
-                view.setOnClickListener(listener);
-            }
-        }
-        return holder;
-    }
-
-    /**
      * 显示Toast
      */
     public static void showToast(@NonNull Context context, @StringRes int str) {

@@ -3,10 +3,11 @@ package com.example.lndonesiablend.activity.upload;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -15,8 +16,9 @@ import android.widget.Toast;
 
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.camera.UploadPhotoActivity;
-import com.example.lndonesiablend.activity.submission.FaceDistinguishActivity;
+import com.example.lndonesiablend.activity.face.FaceDistinguishActivity;
 import com.example.lndonesiablend.base.BaseActivity;
+import com.example.lndonesiablend.base.BasePresenter;
 import com.example.lndonesiablend.bean.BaseBean;
 import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.http.Api;
@@ -28,13 +30,11 @@ import java.io.File;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.MultipartBody;
 
@@ -73,10 +73,40 @@ public class IdUploadActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.id_upload_one:
-                uploadIdOne(UploadPhotoActivity.PhotoType.POSITIVE_PHOTO);
+                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+                builder.setTitle(getString(R.string.warm_reminder))
+                        .setMessage(getString(R.string.content))
+                        .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setPositiveButton(getString(R.string.determine), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                uploadIdOne();
+                            }
+                        });
+                builder.show();
                 break;
             case R.id.id_upload_two:
-                uploadIdTwo(UploadPhotoActivity.PhotoType.BACK_PHOTO);
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(mContext);
+                builder1.setTitle(getString(R.string.warm_reminder))
+                        .setMessage(getString(R.string.content))
+                        .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        })
+                        .setPositiveButton(getString(R.string.determine), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                uploadIdTwo();
+                            }
+                        });
+                builder1.show();
                 break;
             case R.id.id_upload_but:
                 if (mPositive != null && mTheOtherSide != null) {
@@ -87,9 +117,9 @@ public class IdUploadActivity extends BaseActivity {
                 break;
             case R.id.id_button_return:
                 if (SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("")) {
-                    startActivity(new Intent(this,PictureUploadActivity.class));
+                    startActivity(new Intent(this, PictureUploadActivity.class));
                     finish();
-                }else if (SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("1")){
+                } else if (SharePreUtil.getString(getActivity(), UserBean.mark, "").equals("1")) {
                     finish();
                 }
                 break;
@@ -148,7 +178,7 @@ public class IdUploadActivity extends BaseActivity {
                 });
     }
 
-    private void uploadIdOne(UploadPhotoActivity.PhotoType positivePhoto) {
+    private void uploadIdOne() {
         uploadPositive(Manifest.permission.CAMERA
                 , Manifest.permission.WRITE_EXTERNAL_STORAGE
                 , Manifest.permission.READ_EXTERNAL_STORAGE
@@ -156,11 +186,16 @@ public class IdUploadActivity extends BaseActivity {
 
     }
 
-    private void uploadIdTwo(UploadPhotoActivity.PhotoType backPhoto) {
+    private void uploadIdTwo() {
         uploadTheOtherSide(Manifest.permission.CAMERA
                 , Manifest.permission.WRITE_EXTERNAL_STORAGE
                 , Manifest.permission.READ_EXTERNAL_STORAGE
                 , Manifest.permission.READ_CONTACTS);
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override
@@ -205,5 +240,24 @@ public class IdUploadActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    private void projectileDisplay() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+        builder.setTitle(getString(R.string.warm_reminder))
+                .setMessage(getString(R.string.please_go_to_the))
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(mContext, "你点击了取消按钮~", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(mContext, "你点击了确定按钮~", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        builder.show();
     }
 }

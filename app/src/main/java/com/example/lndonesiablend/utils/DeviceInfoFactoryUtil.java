@@ -10,7 +10,9 @@ import android.provider.Settings.Secure;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.text.format.Formatter;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -216,16 +218,13 @@ public class DeviceInfoFactoryUtil {
      * @return
      */
     public String getResolution() {
-        float xdpi = mContext.getResources().getDisplayMetrics().xdpi;
-        float ydpi = mContext.getResources().getDisplayMetrics().ydpi;
-        int width = mContext.getResources().getDisplayMetrics().widthPixels;
-        int height = mContext.getResources().getDisplayMetrics().heightPixels;
-
-        // 这样可以计算屏幕的物理尺寸
-        float width2 = (width / xdpi) * (width / xdpi);
-        float height2 = (height / ydpi) * (width / xdpi);
-
-        return ((float) Math.sqrt(width2 + height2))+"";
+        DisplayMetrics metric = new DisplayMetrics();
+        WindowManager windowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        windowManager.getDefaultDisplay().getRealMetrics(metric);
+        int width = metric.widthPixels; // 宽度（PX）
+        int height = metric.heightPixels; // 高度（PX）
+        int densityDpi = metric.densityDpi;
+        return width + "×" + height + " -" + densityDpi;
     }
 
     /**

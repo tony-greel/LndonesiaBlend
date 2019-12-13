@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.MainActivity;
 import com.example.lndonesiablend.base.BaseActivity;
+import com.example.lndonesiablend.base.BasePresenter;
 import com.example.lndonesiablend.bean.Constant;
 import com.example.lndonesiablend.service.UpInstallReferrerInfoService;
 import com.example.lndonesiablend.utils.SharePreUtil;
@@ -15,6 +16,11 @@ public class StartupActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_startup;
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

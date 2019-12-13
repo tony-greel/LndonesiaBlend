@@ -1,16 +1,12 @@
 package com.example.lndonesiablend.activity.upload;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -18,17 +14,14 @@ import android.widget.Toast;
 import com.example.lndonesiablend.LndonesiaBlendApp;
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.camera.UploadPhotoActivity;
-import com.example.lndonesiablend.activity.submission.FaceDistinguishActivity;
 import com.example.lndonesiablend.base.BaseActivity;
+import com.example.lndonesiablend.base.BasePresenter;
 import com.example.lndonesiablend.bean.BaseBean;
-import com.example.lndonesiablend.bean.User;
 import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.http.Api;
 import com.example.lndonesiablend.http.HttpRequestClient;
 import com.example.lndonesiablend.load.MainLoadView;
 import com.example.lndonesiablend.utils.SharePreUtil;
-import com.example.lndonesiablend.utils.UIHelper;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -167,6 +160,11 @@ public class PictureUploadActivity extends BaseActivity {
                     }
                 });
 
+    }
+
+    @Override
+    protected BasePresenter createPresenter() {
+        return null;
     }
 
     @Override

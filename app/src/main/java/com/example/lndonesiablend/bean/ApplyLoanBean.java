@@ -1,6 +1,8 @@
 package com.example.lndonesiablend.bean;
 
-public class ApplyLoanBean {
+import java.io.Serializable;
+
+public class ApplyLoanBean implements Serializable {
 
     private String loanId;
 

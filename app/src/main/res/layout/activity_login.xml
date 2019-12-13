@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context="com.example.lndonesiablend.activity.login.LoginActivity">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/long_bg"
+            tools:ignore="MissingConstraints" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="@dimen/dp_87"
+            android:orientation="vertical"
+            android:textColor="#FFFFFF">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|left"
+                android:layout_marginLeft="@dimen/dp_30"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:text="Keterangan"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/sp_30" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/mCvBorrow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:layout_marginLeft="@dimen/dp_17"
+                android:layout_marginTop="@dimen/dp_67"
+                android:layout_marginRight="@dimen/dp_17"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_40"
+                        android:layout_marginLeft="@dimen/dp_17"
+                        android:layout_marginTop="@dimen/dp_50"
+                        android:layout_marginRight="@dimen/dp_17"
+                        android:background="@null"
+                        android:hint="SILAKAN MASUKKAN NOM"
+                        android:singleLine="true"
+                        android:maxLength="12"
+                        android:digits="1234567890"
+                        android:inputType="number"
+                        android:textColor="#A6A3A4" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_1"
+                        android:layout_marginLeft="@dimen/dp_17"
+                        android:layout_marginTop="@dimen/dp_10"
+                        android:layout_marginRight="@dimen/dp_17"
+                        android:background="#F5F1F2" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_30">
+
+                        <EditText
+                            android:id="@+id/et_password"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_40"
+                            android:layout_marginLeft="@dimen/dp_17"
+                            android:layout_marginTop="@dimen/dp_20"
+                            android:layout_marginRight="@dimen/dp_17"
+                            android:maxLength="6"
+                            android:background="@null"
+                            android:hint="Silakan masuk"
+                            android:singleLine="true"
+                            android:digits="1234567890"
+                            android:inputType="number"
+                            android:textColor="#A6A3A4" />
+
+                        <Button
+                            android:id="@+id/verification_code_but"
+                            android:layout_width="@dimen/dp_106"
+                            android:layout_height="@dimen/dp_36"
+                            android:layout_gravity="right|center"
+                            android:layout_marginTop="@dimen/dp_2"
+                            android:layout_marginRight="@dimen/dp_17"
+                            android:background="@drawable/picture_upload_btn_bg_two"
+                            android:gravity="center"
+                            android:text="DAPATKAN KODE VERIFI"
+                            android:textColor="#FFFEFF"/>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_1"
+                            android:layout_gravity="center|bottom"
+                            android:layout_marginLeft="@dimen/dp_17"
+                            android:layout_marginTop="@dimen/dp_70"
+                            android:layout_marginRight="@dimen/dp_17"
+                            android:background="#F5F1F2" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp_50">
+
+                        <Button
+                            android:id="@+id/login_but"
+                            style="@style/MatchAndWrap.DialogButtonStyle"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/picture_upload_btn_bg_two"
+                            android:text="登录" />
+                    </FrameLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+    </FrameLayout>
+</ScrollView>

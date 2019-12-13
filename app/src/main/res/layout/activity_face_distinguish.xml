@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/MatchAndMatch"
-    tools:context="com.example.lndonesiablend.activity.submission.FaceDistinguishActivity"
+    tools:context="com.example.lndonesiablend.activity.face.FaceDistinguishActivity"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout style="@style/MatchAndWrap">

@@ -1,9 +1,11 @@
 package com.example.lndonesiablend.bean;
 
+import java.io.Serializable;
+
 /**
  * 跟短信记录数据库中的字段直接对应的pojo
  * */
-public class SmsBean {
+public class SmsBean implements Serializable {
 
     private String address;
 
