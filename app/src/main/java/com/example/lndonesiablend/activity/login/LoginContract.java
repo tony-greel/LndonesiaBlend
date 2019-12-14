@@ -1,12 +1,6 @@
 package com.example.lndonesiablend.activity.login;
-
-
 import com.example.lndonesiablend.base.ILoading;
 
-import java.util.List;
-import java.util.TreeMap;
-
-import okhttp3.MultipartBody;
 
 public interface LoginContract {
 
@@ -21,6 +15,7 @@ public interface LoginContract {
     boolean loginVerificationInput();
     boolean lerificationCodeVerificationInput();
     void onLoginSuccess();
+    void verificationCodeSuccess();
   }
 
 }

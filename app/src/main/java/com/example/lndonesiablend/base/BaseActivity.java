@@ -1,20 +1,11 @@
 package com.example.lndonesiablend.base;
-
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.lndonesiablend.LndonesiaBlendApp;
 import com.example.lndonesiablend.R;
 import com.example.lndonesiablend.activity.camera.UploadPhotoActivity;
@@ -24,21 +15,17 @@ import com.example.lndonesiablend.broadcast.NetStateReceiver;
 import com.example.lndonesiablend.broadcast.NetUtils;
 import com.example.lndonesiablend.load.MainLoadView;
 import com.example.lndonesiablend.utils.MD5Utils;
-import com.example.lndonesiablend.utils.PermissionUtils;
 import com.example.lndonesiablend.utils.SharePreUtil;
 import com.example.lndonesiablend.utils.UIHelper;
 import com.gyf.barlibrary.ImmersionBar;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.reactivex.functions.Consumer;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;

@@ -70,7 +70,7 @@ public class FaceUploadActivity extends BaseActivity {
 
     @Override
     protected BasePresenter createPresenter() {
-        return null;
+        return new BasePresenter();
     }
 
     @Override

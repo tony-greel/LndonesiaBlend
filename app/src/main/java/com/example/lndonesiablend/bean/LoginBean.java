@@ -18,6 +18,18 @@ public class LoginBean {
     private String custId;
     private String signKeyToken;
 
+    @Override
+    public String toString() {
+        return "LoginBean{" +
+                "phone='" + phone + '\'' +
+                ", phonepre='" + phonepre + '\'' +
+                ", user_id='" + user_id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", custId='" + custId + '\'' +
+                ", signKeyToken='" + signKeyToken + '\'' +
+                '}';
+    }
+
     public String getPhone() {
         return phone;
     }

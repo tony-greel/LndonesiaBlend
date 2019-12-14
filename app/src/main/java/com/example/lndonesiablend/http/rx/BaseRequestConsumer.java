@@ -9,7 +9,7 @@ import com.example.lndonesiablend.bean.BaseBean;
 
 import io.reactivex.functions.Consumer;
 
-public abstract class BaseRequestConsumer<D> implements Consumer<BaseBean<D>> {
+public abstract class BaseRequestConsumer<T> implements Consumer<BaseBean<T>> {
 
   private ILoading iLoading;
 
@@ -20,8 +20,8 @@ public abstract class BaseRequestConsumer<D> implements Consumer<BaseBean<D>> {
   public static final String REQUEST_OK = "200";
 
   @Override
-  public void accept(BaseBean<D> baseRequestBean) throws Exception {
-    if (baseRequestBean.getCode() == REQUEST_OK){
+  public void accept(BaseBean<T> baseRequestBean) throws Exception {
+    if (baseRequestBean.getCode().equals(REQUEST_OK)){
       onRequestSuccess(baseRequestBean.getResult());
     }else {
       onRequestError(baseRequestBean);
@@ -31,7 +31,7 @@ public abstract class BaseRequestConsumer<D> implements Consumer<BaseBean<D>> {
     }
   }
 
-  protected abstract void onRequestSuccess(D data);
+  protected abstract void onRequestSuccess(T data);
 
   public void onRequestError(BaseBean baseRequestBean){
     Toast.makeText(LndonesiaBlendApp.getAppContext(), baseRequestBean.getMessage(), Toast.LENGTH_SHORT).show();

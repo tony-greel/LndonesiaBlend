@@ -24,6 +24,7 @@ import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.bean.VerificationCodeBean;
 import com.example.lndonesiablend.http.Api;
 import com.example.lndonesiablend.http.HttpRequestClient;
+import com.example.lndonesiablend.utils.CountDownTimerUtils;
 import com.example.lndonesiablend.utils.SharePreUtil;
 import com.example.lndonesiablend.utils.UIHelper;
 
@@ -42,19 +43,13 @@ import okhttp3.MultipartBody;
 
 public class LoginActivity extends BaseActivity<LoginPresenter> implements LoginContract.View {
 
-    @BindView(R.id.et_name)
-    EditText etName;
-    @BindView(R.id.et_password)
-    EditText etPassword;
-    @BindView(R.id.verification_code_but)
-    Button verificationCodeBut;
-    @BindView(R.id.login_but)
-    Button loginBut;
-    @BindView(R.id.mCvBorrow)
-    CardView mCvBorrow;
+    @BindView(R.id.et_name) EditText etName;
+    @BindView(R.id.et_password) EditText etPassword;
 
-//    private String name = etName.getText().toString();
-//    private String verificationCode = etPassword.getText().toString();
+    @BindView(R.id.verification_code_but) Button verificationCodeBut;
+    @BindView(R.id.login_but) Button loginBut;
+
+    @BindView(R.id.mCvBorrow) CardView mCvBorrow;
 
     @Override
     protected int getLayoutId() {
@@ -75,97 +70,13 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.verification_code_but:
-                if (TextUtils.isEmpty(getUsername())) {
-                    UIHelper.showToast(this, "手机号不能为空");
-                } else {
-                    presenter.lerificationCode();
-
-                }
+                presenter.lerificationCode();
                 break;
             case R.id.login_but:
                 presenter.login();
                 break;
         }
     }
-
-    private void getVerificationCode() {
-        TreeMap requestUserWorkParams = buildCommonParams();
-//        requestUserWorkParams.put("phone",name);
-        requestUserWorkParams.put("type", "2");
-        requestUserWorkParams.put("app_version", LndonesiaBlendApp.VERSION_NUMBER);
-        requestUserWorkParams.put("version", LndonesiaBlendApp.VERSION);
-        requestUserWorkParams.put("channel", LndonesiaBlendApp.CHANNEL);
-        requestUserWorkParams.put("timestamp", LndonesiaBlendApp.TIMESTAMP);
-        requestUserWorkParams.put("pkg_name", LndonesiaBlendApp.APPLICATION_ID);
-        String sign = signParameter(requestUserWorkParams, SharePreUtil.getString(this, UserBean.token, ""));
-        requestUserWorkParams.put("sign", sign);
-
-        HttpRequestClient.getRetrofitHttpClient().create(Api.class).verificationCode(requestUserWorkParams)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseBean<VerificationCodeBean>>() {
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(BaseBean<VerificationCodeBean> loginBeanBaseBean) {
-                        Toast.makeText(mContext, "发送验证码成功！！", Toast.LENGTH_SHORT).show();
-                        Log.d("LJJ", loginBeanBaseBean.getMessage());
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Toast.makeText(mContext, "发送验证码失败！！", Toast.LENGTH_SHORT).show();
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
-    private void loginRequest() {
-        TreeMap requestUserWorkParams = buildCommonParams();
-
-        requestUserWorkParams.put("app_version", LndonesiaBlendApp.VERSION_NUMBER);
-        requestUserWorkParams.put("version", LndonesiaBlendApp.VERSION);
-        requestUserWorkParams.put("channel", LndonesiaBlendApp.CHANNEL);
-        requestUserWorkParams.put("timestamp", LndonesiaBlendApp.TIMESTAMP);
-        requestUserWorkParams.put("pkg_name", LndonesiaBlendApp.APPLICATION_ID);
-        String sign = signParameter(requestUserWorkParams, SharePreUtil.getString(this, UserBean.token, ""));
-        requestUserWorkParams.put("sign", sign);
-
-        HttpRequestClient.getRetrofitHttpClient().create(Api.class).smsLogin(requestUserWorkParams)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<BaseBean<LoginBean>>() {
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(BaseBean<LoginBean> loginBeanBaseBean) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
 
     @Override
     public String getUsername() {
@@ -194,15 +105,21 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements Login
             return false;
         } else if (getUsername().length() == 12) {
             return true;
+        }else {
+            UIHelper.showToast(this, "手机号不能低于12位数字");
+            return false;
         }
-        return false;
     }
-
 
     @Override
     public void onLoginSuccess() {
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
-//        UIHelper.intentActivity(MainActivity.class, true);
+    }
+
+    @Override
+    public void verificationCodeSuccess() {
+        CountDownTimerUtils mCountDownTimerUtils = new CountDownTimerUtils(verificationCodeBut, 60000, 1000);
+        mCountDownTimerUtils.start();
     }
 }

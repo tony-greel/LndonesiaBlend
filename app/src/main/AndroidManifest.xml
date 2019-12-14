@@ -30,13 +30,13 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:allowBackup">
         <activity android:name=".activity.TestActivity"></activity>
-<!--        <activity android:name=".activity.login.LoginActivity" />-->
+        <activity android:name=".activity.login.LoginActivity" />
         <activity android:name=".activity.upload.UploadSuccessActivity" />
         <activity android:name=".activity.upload.FaceUploadActivity" />
         <activity android:name=".activity.upload.PictureUploadActivity" />
         <activity android:name=".activity.upload.IdUploadActivity" />
         <activity android:name=".activity.camera.UploadPhotoActivity" />
-        <activity android:name=".activity.login.LoginActivity">
+        <activity android:name=".activity.startup.StartupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

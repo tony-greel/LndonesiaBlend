@@ -164,7 +164,7 @@ public class PictureUploadActivity extends BaseActivity {
 
     @Override
     protected BasePresenter createPresenter() {
-        return null;
+        return new BasePresenter();
     }
 
     @Override

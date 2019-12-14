@@ -22,7 +22,7 @@ public class UploadSuccessActivity extends BaseActivity {
 
     @Override
     protected BasePresenter createPresenter() {
-        return null;
+        return new BasePresenter();
     }
 
     @Override

@@ -6,6 +6,7 @@ import com.example.lndonesiablend.bean.LoginBean;
 import com.example.lndonesiablend.bean.UserBean;
 import com.example.lndonesiablend.bean.VerificationCodeBean;
 import com.example.lndonesiablend.helper.RequestHelper;
+import com.example.lndonesiablend.helper.SpCacheHelper;
 import com.example.lndonesiablend.utils.MD5Utils;
 import com.example.lndonesiablend.utils.SharePreUtil;
 
@@ -39,6 +40,18 @@ public class LoginModel {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    public void cacheUserLocation(LoginBean loginBean) {
+        SpCacheHelper.withBuilder()
+                .withString("phone", loginBean.getPhone())
+                .withString("phonepre", loginBean.getPhonepre())
+                .withString("user_id", loginBean.getUser_id())
+                .withString("userName", loginBean.getUserName())
+                .withString("custId", loginBean.getCustId())
+                .withString("signKeyToken", loginBean.getSignKeyToken())
+                .commit();
+    }
+
 
     //公共参数
     private TreeMap<String, Object> buildCommonParams() {

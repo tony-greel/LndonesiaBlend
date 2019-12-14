@@ -187,7 +187,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected BasePresenter createPresenter() {
-        return null;
+        return new BasePresenter();
     }
 
     /**

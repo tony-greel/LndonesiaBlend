@@ -84,7 +84,6 @@ public class UIHelper {
 
     /**
      * 判断是否为空
-     *
      * @param position
      * @return
      */
